@@ -1,0 +1,52 @@
+{
+  "Number" : {
+    "RU": "Номер",
+    "EN": "Number",
+    "UA": "Номер"
+  },
+  "city" : {
+    "RU": "Город",
+    "EN": "City",
+    "UA": "Місто"
+  },
+  "contactor" : {
+    "RU": "Подрядчик",
+    "EN": "Contractor",
+    "UA": "Підрядник"
+  },
+  "adress" : {
+    "RU": "Адрес",
+    "EN": "The address",
+    "UA": "Адреса"
+  },
+  "SelfNumberCont" : {
+    "RU": "Номер подрядчика",
+    "EN": "Contractor number",
+    "UA": "Номер підрядника"
+  },
+  "Razom_number" : {
+    "RU": "Уникальный код кампании",
+    "EN": "Unique campaign code",
+    "UA": "Унікальний код кампанії"
+  },
+  "type" : {
+    "RU": "Тип",
+    "EN": "Type",
+    "UA": "Тип"
+  },
+  "format" : {
+    "RU": "Формат",
+    "EN": "Format",
+    "UA": "Формат"
+  },
+  "side" : {
+    "RU": "Сторона",
+    "EN": "Side",
+    "UA": "Сторона"
+  },
+  "story" : {
+    "RU": "Сюжет",
+    "EN": "Visual",
+    "UA": "Сюжет"
+  }
+}

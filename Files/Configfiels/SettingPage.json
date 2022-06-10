@@ -1,0 +1,101 @@
+{
+  "ButtonBack" : {
+    "RU": "Вернуться",
+    "EN": "Return",
+    "UA": "Повернутись"
+  },
+  "HeadIn" : {
+    "RU": "Вы зашли как",
+    "EN": "You entered as",
+    "UA": "Ви зайшли як"
+  },
+  "ChangeLenguage" : {
+    "RU" : "Смена языка",
+    "EN" : "Switch language",
+    "UA" : "Зміна мови"
+  },
+  "ObjAddClient" : {
+    "RU": "Добавить клиента",
+    "EN": "Add client",
+    "UA": "Додати клієнта"
+  },
+  "ObjAddRK" : {
+    "RU": "Добавить рекламную кампанию",
+    "EN": "Add an advertising campaign",
+    "UA": "Додати рекламну кампанію"
+  },
+  "ObjDeleteClient" : {
+    "RU": "Удалить клиента",
+    "EN": "Delete client",
+    "UA": "Видалити клієнта"
+  },
+  "ObjChangeorCopy" : {
+    "RU": "Копировать или изменить РК",
+    "EN": "Copy or change AC",
+    "UA": "Копіювати або змінити РК"
+  },
+  "ButtonAddClient" : {
+    "RU": "Добавить клиента",
+    "EN": "Add client",
+    "UA": "Додати клієнта"
+  },"ButtonAddRK" : {
+    "RU": "Добавить РК",
+    "EN": "Add an AC",
+    "UA": "Додати РК"
+  },
+  "ButtonDeleteClient" : {
+    "RU": "Удалить",
+    "EN": "Delete",
+    "UA": "Видалити"
+  },
+  "ButtonCopy" : {
+    "RU": "Копировать",
+    "EN": "Copy",
+    "UA": "Копіювати"
+  },
+  "ButtonChangeNameAC" : {
+    "RU": "Изменить название РК",
+    "EN": "Change the name of the AC",
+    "UA": "Змінити назву РК"
+  },
+  "NameTableAC" : {
+    "RU": "Таблица РК",
+    "EN": "Table of AC",
+    "UA": "Таблиця РК"
+  },
+  "CountACs" : {
+    "RU": "Количество РК",
+    "EN": "Number of AC",
+    "UA": "Кількість РК"
+  },
+  "SelectFirstChangeorCopy" : {
+    "RU": "Рекламные компании",
+    "EN": "Advertising companies",
+    "UA": "Рекламні компанії"
+  },
+  "PlacholderChangeorCopy" : {
+    "RU": "Новое название РК",
+    "EN": "New name of AC",
+    "UA": "Нова назва РК"
+  },
+  "SelectNameFirst": {
+    "RU": "Клиент",
+    "EN": "Сlient",
+    "UA": "Клієнт"
+  },
+  "ButtonDeleteUser" : {
+    "RU": "Удалить пользователя",
+    "EN": "Delete user",
+    "UA": "Видалити користувача"
+  },
+  "ButtonAddUser" : {
+    "RU": "Создать пользователя",
+    "EN": "Create user",
+    "UA": "Створити користувача"
+  },
+  "TittlePersonalCabinet" : {
+    "RU": "Личный кабинет",
+    "EN": "Personal cabinet",
+    "UA": "Особистий кабінет"
+  }
+}

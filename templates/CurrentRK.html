@@ -1,0 +1,730 @@
+<html>
+{% load static %}
+	<head>
+	    <meta charset="UTF-8">
+	    <title>{{ NameRK.RK }}</title>
+		<link rel="stylesheet" type="text/css" href="{% static 'OhhRazom/style/exit_data/css/cssCurentRK/for_table.css' %}">
+		<meta http-equiv="cache-control" content="no-cache">
+        <meta http-equiv="expires" content="0">
+				<link rel="shortcut icon" href="{% static 'OhhRazom/image/icons/logo_admin.png' %}" type="img/logo.png">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+<!-- jQuery and JS bundle w/ Popper.js -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'OhhRazom/style/exit_data/js/spectrum/spectrum.css' %}">
+<script type="text/javascript" src="{% static 'OhhRazom/style/exit_data/js/spectrum/spectrum.js' %}"></script>
+		<script src="{% static 'OhhRazom/style/exit_data/js/search_table.js' %}"></script>
+		<script src="{% static 'OhhRazom/style/exit_data/js/hide.js' %}"></script>
+		<script src="{% static 'OhhRazom/style/exit_data/js/sort/tape.js' %}"></script>
+    		<script src="{% static 'OhhRazom/style/exit_data/js/sort/spec/tablesort.js' %}"></script>
+            <script src="{% static 'OhhRazom/style/exit_data/js/sort/spec/dotsep.js' %}"></script>
+            <script src="{% static 'OhhRazom/style/exit_data/js/sort/spec/multibody.js' %}"></script>
+            <script src="{% static 'OhhRazom/style/exit_data/js/sort/spec/filesize.js' %}"></script>
+            <script src="{% static 'OhhRazom/style/exit_data/js/sort/spec/date.js' %}"></script>
+            <script src="{% static 'OhhRazom/style/exit_data/js/sort/spec/number.js' %}"></script>
+            <script src="{% static 'OhhRazom/style/exit_data/js/sort/spec/monthname.js' %}"></script>
+            <script src="{% static 'OhhRazom/style/exit_data/js/sort/src/tablesort.js' %}"></script>
+            <script src="{% static 'OhhRazom/style/exit_data/js/sort/src/sorts/tablesort.dotsep.js' %}"></script>
+            <script src="{% static 'OhhRazom/style/exit_data/js/sort/src/sorts/tablesort.filesize.js' %}"></script>
+            <script src="{% static 'OhhRazom/style/exit_data/js/sort/src/sorts/tablesort.date.js' %}"></script>
+            <script src="{% static 'OhhRazom/style/exit_data/js/sort/src/sorts/tablesort.number.js' %}"></script>
+            <script src="{% static 'OhhRazom/style/exit_data/js/sort/src/sorts/tablesort.monthname.js' %}"></script>
+	</head>
+  <style>
+    #all_table th{
+      background-color:#007bff;
+    }
+		.full-spectrum .sp-palette {
+	max-width: 200px;
+	}
+	.formout{
+	float: right;
+	margin-right: 0.2%;
+	}
+	.Reach{
+	    width: 25%;
+	}
+  </style>
+	<body>
+
+      <!--Начало модальных окон -->
+        <!--Нанести маркеры -->
+				<script type="text/javascript">
+					function Color_ch() {
+						document.getElementById("color_ss").value = document.getElementById("full").value;
+					}
+					function Color_ch1() {
+						document.getElementById("color_ss1").value = document.getElementById("full1").value;
+					}
+				</script>
+    <div class="modal fade" id="marker" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">{% if lenguage == 'RU' %}
+                                                            {{ BasicName.ModalAddMarkHead.RU }}
+                                                        {% elif lenguage == 'EN' %}
+                                                            {{ BasicName.ModalAddMarkHead.EN }}
+                                                        {% elif lenguage == 'UA' %}
+                                                            {{ BasicName.ModalAddMarkHead.UA }}
+                                                        {% endif %}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action ="AddMark" onsubmit="Color_ch()" method ="POST">
+    				<p class="text-center">
+							{% if lenguage == 'RU' %}
+                                {{ BasicName.ModalStory.RU }}
+                            {% elif lenguage == 'EN' %}
+                                {{ BasicName.ModalStory.EN }}
+                            {% elif lenguage == 'UA' %}
+                                {{ BasicName.ModalStory.UA }}
+                            {% endif %}<br/>
+							<input type='text' id = "go_mark" name ="story"/>
+							<input type='text' id="full"/><br/>
+							<input type="hidden" id="color_ss" name = "color_begin">
+              <input type="radio" name="choise_type"  value="doors"  /> Doors
+    				 <input type="radio" name="choise_type" value="Razom_number" checked /> {% if lenguage == 'RU' %}
+                                                                                        {{ BasicName.ModalCheckboxRazom_number.RU }}
+                                                                                    {% elif lenguage == 'EN' %}
+                                                                                        {{ BasicName.ModalCheckboxRazom_number.EN }}
+                                                                                    {% elif lenguage == 'UA' %}
+                                                                                        {{ BasicName.ModalCheckboxRazom_number.UA }}
+                                                                                    {% endif %}
+            {% if lenguage == 'RU' %}
+                <textarea class="form-control rounded-0" rows="10" name="area_mark" placeholder = "{{ BasicName.ModalTextArea.RU }}"></textarea>
+            {% elif lenguage == 'EN' %}
+                <textarea class="form-control rounded-0" rows="10" name="area_mark" placeholder = "{{ BasicName.ModalTextArea.EN }}"></textarea>
+            {% elif lenguage == 'UA' %}
+                <textarea class="form-control rounded-0" rows="10" name="area_mark" placeholder = "{{ BasicName.ModalTextArea.UA }}"></textarea>
+            {% endif %}
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">{% if lenguage == 'RU' %}
+                                                                                        {{ BasicName.ModalButtonClose.RU }}
+                                                                                    {% elif lenguage == 'EN' %}
+                                                                                        {{ BasicName.ModalButtonClose.EN }}
+                                                                                    {% elif lenguage == 'UA' %}
+                                                                                        {{ BasicName.ModalButtonClose.UA }}
+                                                                                    {% endif %}</button>
+              <button  class="btn btn-primary" name="add_mark_RK">{% if lenguage == 'RU' %}
+                                                                    {{ BasicName.ModalButtonAdd.RU }}
+                                                                {% elif lenguage == 'EN' %}
+                                                                    {{ BasicName.ModalButtonAdd.EN }}
+                                                                {% elif lenguage == 'UA' %}
+                                                                    {{ BasicName.ModalButtonAdd.UA }}
+                                                                {% endif %}</button>
+              {% csrf_token %}
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+		<!--изменения цвета -->
+		<div class="modal fade" id="col" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">{% if lenguage == 'RU' %}
+                                                            {{ BasicName.ModalChangeHead.RU }}
+                                                        {% elif lenguage == 'EN' %}
+                                                            {{ BasicName.ModalChangeHead.EN }}
+                                                        {% elif lenguage == 'UA' %}
+                                                            {{ BasicName.ModalChangeHead.UA }}
+                                                        {% endif %}</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+						<form action ="Changecolor" onsubmit="Color_ch1()" method ="POST">
+                            <div class="modal-body">
+						<p class="text-center">
+							{% if lenguage == 'RU' %}
+                                {{ BasicName.ModalStory.RU }}
+                            {% elif lenguage == 'EN' %}
+                                {{ BasicName.ModalStory.EN }}
+                            {% elif lenguage == 'UA' %}
+                                {{ BasicName.ModalStory.UA }}
+                            {% endif %}<br/>
+							<input type='text' name ="story"/>
+							<input type='text' id="full1"/><br/>
+							<input type="hidden" id="color_ss1" name = "color_begin">
+							<input type="radio" name="choise_type"  value="doors"  /> Doors
+						 <input type="radio" name="choise_type" value="Razom_number" checked/> {% if lenguage == 'RU' %}
+                                                                                        {{ BasicName.ModalCheckboxRazom_number.RU }}
+                                                                                    {% elif lenguage == 'EN' %}
+                                                                                        {{ BasicName.ModalCheckboxRazom_number.EN }}
+                                                                                    {% elif lenguage == 'UA' %}
+                                                                                        {{ BasicName.ModalCheckboxRazom_number.UA }}
+                                                                                    {% endif %}
+            {% if lenguage == 'RU' %}
+                <textarea class="form-control rounded-0" rows="10" name="area_mark" placeholder = "{{ BasicName.ModalTextArea.RU }}"></textarea>
+            {% elif lenguage == 'EN' %}
+                <textarea class="form-control rounded-0" rows="10" name="area_mark" placeholder = "{{ BasicName.ModalTextArea.EN }}"></textarea>
+            {% elif lenguage == 'UA' %}
+                <textarea class="form-control rounded-0" rows="10" name="area_mark" placeholder = "{{ BasicName.ModalTextArea.UA }}"></textarea>
+            {% endif %}
+					</div>
+					<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">{% if lenguage == 'RU' %}
+                                                                                        {{ BasicName.ModalButtonClose.RU }}
+                                                                                    {% elif lenguage == 'EN' %}
+                                                                                        {{ BasicName.ModalButtonClose.EN }}
+                                                                                    {% elif lenguage == 'UA' %}
+                                                                                        {{ BasicName.ModalButtonClose.UA }}
+                                                                                    {% endif %}</button>
+							<button  class="btn btn-primary" name="chenge_col_mark_RK">{% if lenguage == 'RU' %}
+                                                                                        {{ BasicName.ModalButtonChange.RU }}
+                                                                                    {% elif lenguage == 'EN' %}
+                                                                                        {{ BasicName.ModalButtonChange.EN }}
+                                                                                    {% elif lenguage == 'UA' %}
+                                                                                        {{ BasicName.ModalButtonChange.UA }}
+                                                                                    {% endif %}</button>
+                            {% csrf_token %}
+                        </div>
+                    </form>
+				</div>
+			</div>
+		</div>
+    <!--удалить плоскости -->
+    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">{% if lenguage == 'RU' %}
+                                                            {{ BasicName.ModalDeleteHead.RU }}
+                                                        {% elif lenguage == 'EN' %}
+                                                            {{ BasicName.ModalDeleteHead.EN }}
+                                                        {% elif lenguage == 'UA' %}
+                                                            {{ BasicName.ModalDeleteHead.UA }}
+                                                        {% endif %}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action ="DeleteMark" method ="POST">
+    				<p>
+              <input type="radio" name="choise_type"  value="doors"  /> Doors
+    				 <input type="radio" name="choise_type" value="Razom_number" checked/> {% if lenguage == 'RU' %}
+                                                                                        {{ BasicName.ModalCheckboxRazom_number.RU }}
+                                                                                    {% elif lenguage == 'EN' %}
+                                                                                        {{ BasicName.ModalCheckboxRazom_number.EN }}
+                                                                                    {% elif lenguage == 'UA' %}
+                                                                                        {{ BasicName.ModalCheckboxRazom_number.UA }}
+                                                                                    {% endif %}
+            {% if lenguage == 'RU' %}
+                <textarea class="form-control rounded-0" rows="10" name="area_mark" placeholder = "{{ BasicName.ModalTextArea.RU }}"></textarea>
+            {% elif lenguage == 'EN' %}
+                <textarea class="form-control rounded-0" rows="10" name="area_mark" placeholder = "{{ BasicName.ModalTextArea.EN }}"></textarea>
+            {% elif lenguage == 'UA' %}
+                <textarea class="form-control rounded-0" rows="10" name="area_mark" placeholder = "{{ BasicName.ModalTextArea.UA }}"></textarea>
+            {% endif %}
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">{% if lenguage == 'RU' %}
+                                                                                        {{ BasicName.ModalButtonClose.RU }}
+                                                                                    {% elif lenguage == 'EN' %}
+                                                                                        {{ BasicName.ModalButtonClose.EN }}
+                                                                                    {% elif lenguage == 'UA' %}
+                                                                                        {{ BasicName.ModalButtonClose.UA }}
+                                                                                    {% endif %}</button>
+              <button  class="btn btn-primary" name="delete_mark_RK">{% if lenguage == 'RU' %}
+                                                                        {{ BasicName.ModalButtonDelete.RU }}
+                                                                    {% elif lenguage == 'EN' %}
+                                                                        {{ BasicName.ModalButtonDelete.EN }}
+                                                                    {% elif lenguage == 'UA' %}
+                                                                        {{ BasicName.ModalButtonDelete.UA }}
+                                                                    {% endif %}</button>
+              {% csrf_token %}
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--удалить плоскости -->
+    <div class="modal fade" id="Reach" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Reach and Frequency</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action ="AddReach" method ="POST">
+    				<p>
+              <select name = "ChooseCity">
+                {% for i in ForReach %}
+                  <option value="{{i.id}}">{{i.city_standart_UA}}</option>
+                  {% endfor %}
+              </select>
+                <input name="TextForReach" class="Reach" type="text" placeholder="Reach">
+                <input name="TextForFrequency" class="Reach" type="text" placeholder="Frequency">
+                <input name="TextForPeriod" class="Reach" type="text" placeholder="Period">
+                        <br/>
+              <button  class="btn btn-primary" name="delete_mark_RK">{% if lenguage == 'RU' %}
+                                                                        {{ BasicName.ButtonForReach.RU }}
+                                                                    {% elif lenguage == 'EN' %}
+                                                                        {{ BasicName.ButtonForReach.EN }}
+                                                                    {% elif lenguage == 'UA' %}
+                                                                        {{ BasicName.ButtonForReach.UA }}
+                                                                    {% endif %}</button><br/>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                {% if lenguage == 'RU' %}
+                                    {{BasicName.TextReachCity.RU}}
+                                {% elif lenguage == 'EN' %}
+                                    {{BasicName.TextReachCity.EN}}
+                                {% elif lenguage == 'UA' %}
+                                    {{BasicName.TextReachCity.UA}}
+                                {% endif %}
+                            </th>
+                            <th>
+                                {% if lenguage == 'RU' %}
+                                    {{BasicName.Reach.RU}}
+                                {% elif lenguage == 'EN' %}
+                                    {{BasicName.Reach.EN}}
+                                {% elif lenguage == 'UA' %}
+                                    {{BasicName.Reach.UA}}
+                                {% endif %}
+                            </th>
+                            <th>
+                                {% if lenguage == 'RU' %}
+                                    {{BasicName.Period.RU}}
+                                {% elif lenguage == 'EN' %}
+                                    {{BasicName.Period.EN}}
+                                {% elif lenguage == 'UA' %}
+                                    {{BasicName.Period.UA}}
+                                {% endif %}
+                            </th>
+                            <th>
+                                {% if lenguage == 'RU' %}
+                                    {{BasicName.Fruqency.RU}}
+                                {% elif lenguage == 'EN' %}
+                                    {{BasicName.Fruqency.EN}}
+                                {% elif lenguage == 'UA' %}
+                                    {{BasicName.Fruqency.UA}}
+                                {% endif %}
+                            </th>
+                        </tr>
+                </thead>
+                <tbody>
+             {% for i in Reach %}
+                     <tr>
+              {% if lenguage == 'RU' %}
+                     <td>{{i.city.city_standart_RU}}: </td> <td>{{i.reach}}%</td> <td>{{i.frequency}}</td> <td>{{i.period}}</td>
+                {% elif lenguage == 'EN' %}
+                     <td>{{i.city.city_standart_EN}}: </td> <td>{{i.reach}}%</td> <td>{{i.frequency}}</td> <td>{{i.period}}</td>
+                {% elif lenguage == 'UA' %}
+                    <td>{{i.city.city_standart_UA}}: </td> <td>{{i.reach}}%</td> <td>{{i.frequency}}</td> <td>{{i.period}}</td>
+                {% endif %}
+                     </tr>
+              {% endfor %}
+                </tbody>
+            </table>
+
+              {% csrf_token %}
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    {% for message in messages %}
+		 <script>
+			 alert("{{ message }}")
+		 </script>
+	 {% endfor %}
+    <!--Конец модальных окон -->
+    <h2>{% if lenguage == 'RU' %}
+                {{ BasicName.NameRK.RU }}
+            {% elif lenguage == 'EN' %}
+                {{ BasicName.NameRK.EN }}
+            {% elif lenguage == 'UA' %}
+                {{ BasicName.NameRK.UA }}
+            {% endif %}
+        :{{ NameRK.RK }}</h2>
+
+      <form action = "ClearAC" class = "formout" method = "POST">
+        <button class="btn btn-primary" name = "clear_RK">
+            {% if lenguage == 'RU' %}
+                {{ BasicName.ButtonClearRK.RU }}
+            {% elif lenguage == 'EN' %}
+                {{ BasicName.ButtonClearRK.EN }}
+            {% elif lenguage == 'UA' %}
+                {{ BasicName.ButtonClearRK.UA }}
+            {% endif %}
+        </button>
+          {% csrf_token %}
+      </form>
+      <form action = "ResetColorStory"  class = "formout" method = "POST">
+        <button class="btn btn-primary" name = "back_mark">
+            {% if lenguage == 'RU' %}
+                {{ BasicName.ButtonResetColor.RU }}
+            {% elif lenguage == 'EN' %}
+                {{ BasicName.ButtonResetColor.EN }}
+            {% elif lenguage == 'UA' %}
+                {{ BasicName.ButtonResetColor.UA }}
+            {% endif %}
+        </button>
+          {% csrf_token %}
+      </form>
+      <form action = "ToExcel" class = "formout" method = "POST">
+        <button class="btn btn-primary" name = "Excel">
+            {% if lenguage == 'RU' %}
+                {{ BasicName.ButtonExportExcel.RU }}
+            {% elif lenguage == 'EN' %}
+                {{ BasicName.ButtonExportExcel.EN }}
+            {% elif lenguage == 'UA' %}
+                {{ BasicName.ButtonExportExcel.UA }}
+            {% endif %}
+        </button>
+          {% csrf_token %}
+      </form>
+      <form action = "back" class = "formout" method = "POST">
+        <button class="btn btn-primary" name = "back">
+            {% if lenguage == 'RU' %}
+                {{ BasicName.ButtonBack.RU }}
+            {% elif lenguage == 'EN' %}
+                {{ BasicName.ButtonBack.EN }}
+            {% elif lenguage == 'UA' %}
+                {{ BasicName.ButtonBack.UA }}
+            {% endif %}
+        </button>
+          {% csrf_token %}
+    </form>
+    <form action = "ShowMap" class = "formout" method = "POST">
+		<button class="btn btn-primary" name = "show_map">
+            {% if lenguage == 'RU' %}
+                {{ BasicName.ButtonShowRK.RU }}
+            {% elif lenguage == 'EN' %}
+                {{ BasicName.ButtonShowRK.EN }}
+            {% elif lenguage == 'UA' %}
+                {{ BasicName.ButtonShowRK.UA }}
+            {% endif %}
+            {% csrf_token %}
+        </button>
+    </form>
+
+      <form action="ChangeLenguage" class = "formout" method="POST" >
+          {% if lenguage == 'RU' %}
+                {{ BasicName.ChangeLenguage.RU }}
+            {% elif lenguage == 'EN' %}
+                {{ BasicName.ChangeLenguage.EN }}
+            {% elif lenguage == 'UA' %}
+                {{ BasicName.ChangeLenguage.UA }}
+            {% endif %}
+        <select name="Len" class="select_send_ajax selectpicker">
+            {% if lenguage == 'RU' %}
+                <option>RU</option>
+                <option>EN</option>
+                <option>UA</option>
+            {% elif lenguage == 'EN' %}
+                <option>EN</option>
+                <option>RU</option>
+                <option>UA</option>
+            {% elif lenguage == 'UA' %}
+                <option>UA</option>
+                <option>EN</option>
+                <option>RU</option>
+            {% endif %}
+        </select>
+          {% csrf_token %}
+     </form>
+      <script>
+          $('.select_send_ajax').on('change', function() {
+              $(this.form).submit();
+            });
+
+            $('form').submit(function(event) { //Отправка всех форм
+            });
+      </script>
+        <button class="btn btn-primary" type="button" id = "beg" data-toggle="modal" data-target="#marker">
+            {% if lenguage == 'RU' %}
+                {{ BasicName.ButtonAddMark.RU }}
+            {% elif lenguage == 'EN' %}
+                {{ BasicName.ButtonAddMark.EN }}
+            {% elif lenguage == 'UA' %}
+                {{ BasicName.ButtonAddMark.UA }}
+            {% endif %}
+        </button>
+
+        <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#col">
+            {% if lenguage == 'RU' %}
+                {{ BasicName.ButtonChangeMark.RU }}
+            {% elif lenguage == 'EN' %}
+                {{ BasicName.ButtonChangeMark.EN }}
+            {% elif lenguage == 'UA' %}
+                {{ BasicName.ButtonChangeMark.UA }}
+            {% endif %}
+        </button>
+        <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#delete">
+            {% if lenguage == 'RU' %}
+                {{ BasicName.ButtonDeleteMark.RU }}
+            {% elif lenguage == 'EN' %}
+                {{ BasicName.ButtonDeleteMark.EN }}
+            {% elif lenguage == 'UA' %}
+                {{ BasicName.ButtonDeleteMark.UA }}
+            {% endif %}
+        </button>
+      <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#Reach">
+          Reach and Frequency
+        </button>
+      <div class="pt-2">
+          {% if lenguage == 'RU' %}
+          <input type="button" class="btn btn-primary" value="{{ BasicName.ButtonShow.RU }}" id = "show_but">
+        {% elif lenguage == 'EN' %}
+            <input type="button" class="btn btn-primary" value="{{ BasicName.ButtonShow.EN }}" id = "show_but">
+        {% elif lenguage == 'UA' %}
+            <input type="button" class="btn btn-primary" value="{{ BasicName.ButtonShow.UA }}" id = "show_but">
+        {% endif %}
+
+          {% if lenguage == 'RU' %}
+          <input type="button" class="btn btn-primary" value="{{ BasicName.ButtonHiden.RU }}" id = "hide_but">
+          <input class="menuu_cen" type="text" placeholder="{{ BasicName.PlaceholderSearch.RU }}" id="search-text" onkeyup="tableSearch()">
+        {% elif lenguage == 'EN' %}
+            <input type="button" class="btn btn-primary" value="{{ BasicName.ButtonHiden.EN }}" id = "hide_but">
+          <input class="menuu_cen" type="text" placeholder="{{ BasicName.PlaceholderSearch.EN }}" id="search-text" onkeyup="tableSearch()">
+        {% elif lenguage == 'UA' %}
+            <input type="button" class="btn btn-primary" value="{{ BasicName.ButtonHiden.UA }}" id = "hide_but">
+          <input class="menuu_cen" type="text" placeholder="{{ BasicName.PlaceholderSearch.UA }}" id="search-text" onkeyup="tableSearch()">
+        {% endif %}
+        <select id = "DropforSearch">
+                    {% if lenguage == 'RU' %}
+                        <option selected>{{TranslateBody.SelectChoose.RU}}</option>
+                          <option value="1">{{tableNameHead.city.RU}}</option>
+                          <option value="4">doors</option>
+                          <option value="5">{{tableNameHead.SelfNumberCont.RU}}</option>
+                          <option value="6">{{tableNameHead.Razom_number.RU}}</option>
+                          <option value="3">{{tableNameHead.adress.RU}}</option>
+                          <option value="2">{{tableNameHead.contactor.RU}}</option>
+                          <option value="12">{{tableNameHead.story.RU}}</option>
+                    {% elif lenguage == 'EN' %}
+                        <option selected>{{TranslateBody.SelectChoose.EN}}</option>
+                          <option value="1">{{tableNameHead.city.EN}}</option>
+                          <option value="4">doors</option>
+                          <option value="5">{{tableNameHead.SelfNumberCont.EN}}</option>
+                          <option value="6">{{tableNameHead.Razom_number.EN}}</option>
+                          <option value="3">{{tableNameHead.adress.EN}}</option>
+                          <option value="2">{{tableNameHead.contactor.EN}}</option>
+                          <option value="12">{{tableNameHead.story.EN}}</option>
+                    {% elif lenguage == 'UA' %}
+                        <option selected>{{TranslateBody.SelectChoose.UA}}</option>
+                          <option value="1">{{tableNameHead.city.UA}}</option>
+                          <option value="4">doors</option>
+                          <option value="5">{{tableNameHead.SelfNumberCont.UA}}</option>
+                          <option value="6">{{tableNameHead.Razom_number.UA}}</option>
+                          <option value="3">{{tableNameHead.adress.UA}}</option>
+                          <option value="2">{{tableNameHead.contactor.UA}}</option>
+                          <option value="12">{{tableNameHead.story.UA}}</option>
+                    {% endif %}
+            </select>
+
+          </div>
+  	<table id = "all_table">
+  	    <thead >
+  			<tr>
+                {% if lenguage == 'RU' %}
+                    <th>{{tableNameHead.Number.RU}}</th>
+                    <th>{{tableNameHead.city.RU}}</th>
+                    <th>{{tableNameHead.contactor.RU}}</th>
+                    <th>{{tableNameHead.adress.RU}}</th>
+                    <th>doors</th>
+                    <th>{{tableNameHead.SelfNumberCont.RU}}</th>
+                    <th>{{tableNameHead.Razom_number.RU}}</th>
+                    <th>{{tableNameHead.type.RU}}</th>
+                    <th>{{tableNameHead.format.RU}}</th>
+                    <th>{{tableNameHead.side.RU}}</th>
+                    <th>OTS</th>
+                    <th>GRP</th>
+                    <th>{{tableNameHead.story.RU}}</th>
+                {% elif lenguage == 'EN' %}
+                    <th>{{tableNameHead.Number.EN}}</th>
+                    <th>{{tableNameHead.city.EN}}</th>
+                    <th>{{tableNameHead.contactor.EN}}</th>
+                    <th>{{tableNameHead.adress.EN}}</th>
+                    <th>doors</th>
+                    <th>{{tableNameHead.SelfNumberCont.EN}}</th>
+                    <th>{{tableNameHead.Razom_number.EN}}</th>
+                    <th>{{tableNameHead.type.EN}}</th>
+                    <th>{{tableNameHead.format.EN}}</th>
+                    <th>{{tableNameHead.side.EN}}</th>
+                    <th>OTS</th>
+                    <th>GRP</th>
+                    <th>{{tableNameHead.story.EN}}</th>
+                {% elif lenguage == 'UA' %}
+                    <th>{{tableNameHead.Number.UA}}</th>
+                    <th>{{tableNameHead.city.UA}}</th>
+                    <th>{{tableNameHead.contactor.UA}}</th>
+                    <th>{{tableNameHead.adress.UA}}</th>
+                    <th>doors</th>
+                    <th>{{tableNameHead.SelfNumberCont.UA}}</th>
+                    <th>{{tableNameHead.Razom_number.UA}}</th>
+                    <th>{{tableNameHead.type.UA}}</th>
+                    <th>{{tableNameHead.format.UA}}</th>
+                    <th>{{tableNameHead.side.UA}}</th>
+                    <th>OTS</th>
+                    <th>GRP</th>
+                    <th>{{tableNameHead.story.UA}}</th>
+                {% endif %}
+  		    </tr>
+  		</thead>
+  		<tbody>
+        {% for i in Program %}
+            {% if forloop.counter > 20 %}
+                {% if i.Grade == 1 %}
+                    <tr class="hide" style = "background:#32CD32">
+                {% elif i.Grade == 2 %}
+                    <tr class="hide" style = "background:#FFA07A">
+                {% else %}
+                    <tr class="hide">
+                {% endif %}
+            {% else %}
+                  {% if i.Grade == 1 %}
+                    <tr style = "background:#32CD32">
+                {% elif i.Grade == 2 %}
+                    <tr style = "background:#FFA07A">
+                {% else %}
+                    <tr>
+                {% endif %}
+            {% endif%}
+                <td>{{ forloop.counter }}</td>
+            {% if lenguage == 'RU' %}
+                <td>{{i.Razom_number.city_standart.city_standart_RU}}</td>
+                <td>{{i.Razom_number.Contractor.Contractor_RU}}</td>
+                <td>{{i.Razom_number.adress.adress_RU}} {{i.Razom_number.house}} {{i.Razom_number.loc.Location_RU}}</td>
+            {% elif lenguage == 'EN' %}
+                <td>{{i.Razom_number.city_standart.city_standart_EN}}</td>
+                <td>{{i.Razom_number.Contractor.Contractor_EN}}</td>
+                <td>{{i.Razom_number.adress.adress_EN}} {{i.Razom_number.house}} {{i.Razom_number.loc.Location_EN}}</td>
+            {% elif lenguage == 'UA' %}
+                <td>{{i.Razom_number.city_standart.city_standart_UA}}</td>
+                <td>{{i.Razom_number.Contractor.Contractor_UA}}</td>
+                <td>{{i.Razom_number.adress.adress_UA}} {{i.Razom_number.house}} {{i.Razom_number.loc.Location_UA}}</td>
+            {% endif %}
+                <td>{{i.Razom_number.doors}}</td>
+                <td>{{i.Razom_number.Self_number}}</td>
+                <td>{{i.Razom_number.Razom_number}}</td>
+            {% if lenguage == 'RU' %}
+                <td>{{i.Razom_number.type.typeRU}}</td>
+            {% elif lenguage == 'EN' %}
+                <td>{{i.Razom_number.type.typeEN}}</td>
+            {% elif lenguage == 'UA' %}
+                <td>{{i.Razom_number.type.typeUA}}</td>
+            {% endif %}
+                <td>{{i.Razom_number.format.format}}</td>
+                <td>{{i.Razom_number.side.side}}</td>
+                <td>{{i.Razom_number.OTS}}</td>
+                <td>{{i.Razom_number.GRP}}</td>
+                <td style="background:{{i.story.color}};color:#FFFFFF">{{i.story.story}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+  	</table>
+    <script type="text/javascript">
+		$(".basic").spectrum({
+		    color: "#f00",
+		    change: function(color) {
+		        $("#basic-log").text("change called: " + color.toHexString());
+		    }
+		});
+		$("#full").spectrum({
+		  color: "#191970",
+		 showInput: true,
+		 className: "full-spectrum",
+		 showInitial: true,
+		 showPalette: true,
+		 showSelectionPalette: true,
+		 maxSelectionSize: 10,
+		 preferredFormat: "hex",
+		 localStorageKey: "spectrum.demo",
+		    move: function (color) {
+
+		    },
+		    show: function () {
+
+		    },
+		    beforeShow: function () {
+
+		    },
+		    hide: function () {
+
+		    },
+		    change: function() {
+
+		    },
+		    palette: [
+		        ["rgb(0, 0, 0)", "rgb(67, 67, 67)", "rgb(102, 102, 102)",
+		        "rgb(204, 204, 204)", "rgb(217, 217, 217)","rgb(255, 255, 255)"],
+		        ["rgb(152, 0, 0)", "rgb(255, 0, 0)", "rgb(255, 153, 0)", "rgb(255, 255, 0)", "rgb(0, 255, 0)",
+		        "rgb(0, 255, 255)", "rgb(74, 134, 232)", "rgb(0, 0, 255)", "rgb(153, 0, 255)", "rgb(255, 0, 255)"],
+		        ["rgb(230, 184, 175)", "rgb(244, 204, 204)", "rgb(252, 229, 205)", "rgb(255, 242, 204)", "rgb(217, 234, 211)",
+		        "rgb(208, 224, 227)", "rgb(201, 218, 248)", "rgb(207, 226, 243)", "rgb(217, 210, 233)", "rgb(234, 209, 220)",
+		        "rgb(221, 126, 107)", "rgb(234, 153, 153)", "rgb(249, 203, 156)", "rgb(255, 229, 153)", "rgb(182, 215, 168)",
+		        "rgb(162, 196, 201)", "rgb(164, 194, 244)", "rgb(159, 197, 232)", "rgb(180, 167, 214)", "rgb(213, 166, 189)",
+		        "rgb(204, 65, 37)", "rgb(224, 102, 102)", "rgb(246, 178, 107)", "rgb(255, 217, 102)", "rgb(147, 196, 125)",
+		        "rgb(118, 165, 175)", "rgb(109, 158, 235)", "rgb(111, 168, 220)", "rgb(142, 124, 195)", "rgb(194, 123, 160)",
+		        "rgb(166, 28, 0)", "rgb(204, 0, 0)", "rgb(230, 145, 56)", "rgb(241, 194, 50)", "rgb(106, 168, 79)",
+		        "rgb(69, 129, 142)", "rgb(60, 120, 216)", "rgb(61, 133, 198)", "rgb(103, 78, 167)", "rgb(166, 77, 121)",
+		        "rgb(91, 15, 0)", "rgb(102, 0, 0)", "rgb(120, 63, 4)", "rgb(127, 96, 0)", "rgb(39, 78, 19)",
+		        "rgb(12, 52, 61)", "rgb(28, 69, 135)", "rgb(7, 55, 99)", "rgb(32, 18, 77)", "rgb(76, 17, 48)"]
+		    ]
+		});
+		$("#full1").spectrum({
+		 color: "#191970",
+		 showInput: true,
+		 id:"heh",
+		 className: "full-spectrum",
+		 showInitial: true,
+		 showPalette: true,
+		 showSelectionPalette: true,
+		 maxSelectionSize: 10,
+		 preferredFormat: "hex",
+		 localStorageKey: "spectrum.demo",
+		    move: function (color) {
+
+		    },
+		    show: function () {
+
+		    },
+		    beforeShow: function () {
+
+		    },
+		    hide: function () {
+
+		    },
+		    change: function() {
+
+		    },
+		    palette: [
+		        ["rgb(0, 0, 0)", "rgb(67, 67, 67)", "rgb(102, 102, 102)",
+		        "rgb(204, 204, 204)", "rgb(217, 217, 217)","rgb(255, 255, 255)"],
+		        ["rgb(152, 0, 0)", "rgb(255, 0, 0)", "rgb(255, 153, 0)", "rgb(255, 255, 0)", "rgb(0, 255, 0)",
+		        "rgb(0, 255, 255)", "rgb(74, 134, 232)", "rgb(0, 0, 255)", "rgb(153, 0, 255)", "rgb(255, 0, 255)"],
+		        ["rgb(230, 184, 175)", "rgb(244, 204, 204)", "rgb(252, 229, 205)", "rgb(255, 242, 204)", "rgb(217, 234, 211)",
+		        "rgb(208, 224, 227)", "rgb(201, 218, 248)", "rgb(207, 226, 243)", "rgb(217, 210, 233)", "rgb(234, 209, 220)",
+		        "rgb(221, 126, 107)", "rgb(234, 153, 153)", "rgb(249, 203, 156)", "rgb(255, 229, 153)", "rgb(182, 215, 168)",
+		        "rgb(162, 196, 201)", "rgb(164, 194, 244)", "rgb(159, 197, 232)", "rgb(180, 167, 214)", "rgb(213, 166, 189)",
+		        "rgb(204, 65, 37)", "rgb(224, 102, 102)", "rgb(246, 178, 107)", "rgb(255, 217, 102)", "rgb(147, 196, 125)",
+		        "rgb(118, 165, 175)", "rgb(109, 158, 235)", "rgb(111, 168, 220)", "rgb(142, 124, 195)", "rgb(194, 123, 160)",
+		        "rgb(166, 28, 0)", "rgb(204, 0, 0)", "rgb(230, 145, 56)", "rgb(241, 194, 50)", "rgb(106, 168, 79)",
+		        "rgb(69, 129, 142)", "rgb(60, 120, 216)", "rgb(61, 133, 198)", "rgb(103, 78, 167)", "rgb(166, 77, 121)",
+		        "rgb(91, 15, 0)", "rgb(102, 0, 0)", "rgb(120, 63, 4)", "rgb(127, 96, 0)", "rgb(39, 78, 19)",
+		        "rgb(12, 52, 61)", "rgb(28, 69, 135)", "rgb(7, 55, 99)", "rgb(32, 18, 77)", "rgb(76, 17, 48)"]
+		    ]
+		});
+		//---------------------------
+                table = document.getElementById('all_table');
+                new Tablesort(table);
+                </script>
+
+  </body>
+  </html>

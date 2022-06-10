@@ -1,0 +1,141 @@
+{
+  "NameRK" : {
+    "RU": "Данная Рекламная кампания",
+    "EN": "This advertising campaign",
+    "UA": "Дана Рекламна кампанія"
+  },
+  "ButtonAddMark" : {
+    "RU": "Нанести маркеры",
+    "EN": "Apply markers",
+    "UA": "Нанести маркери"
+  },
+  "ButtonChangeMark" : {
+    "RU": "Изменения цвета маркеров",
+    "EN": "Marker color changes",
+    "UA": "Зміни кольору маркерів"
+  },
+  "ButtonDeleteMark" : {
+    "RU": "Удалить плоскости",
+    "EN": "Delete media",
+    "UA": "Видалити площини"
+  },
+  "ButtonShowRK" : {
+    "RU": "Показать на карте",
+    "EN": "To show on the map",
+    "UA": "Показати на мапі"
+  },
+  "ButtonBack" : {
+    "RU": "Вернуться",
+    "EN": "Return",
+    "UA": "Повернутись"
+  },
+  "ButtonResetColor" : {
+    "RU": "Сбросить цвета маркеров по умолчанию",
+    "EN": "Reset marker colors to default",
+    "UA": "Скинути кольори маркерів за замовчуванням"
+  },
+  "ButtonClearRK" : {
+    "RU": "Очистить РК",
+    "EN": "Clear AC",
+    "UA": "Очистити РК"
+  },
+  "ButtonShow" : {
+    "RU": "Показать",
+    "EN": "Show",
+    "UA": "Показати"
+  },
+  "ModalAddMarkHead" : {
+    "RU": "Добавить маркеры",
+    "EN": "Add Markers",
+    "UA": "Додати маркери"
+  },
+  "ModalButtonAdd" : {
+    "RU": "Добавить",
+    "EN": "Add",
+    "UA": "Додати"
+  },
+  "ModalChangeHead" : {
+    "RU": "Изменить цвета маркера",
+    "EN": "Change marker colors",
+    "UA": "Змінити кольори маркера"
+  },
+  "ModalButtonChange" : {
+    "RU": "Изменить",
+    "EN": "Change",
+    "UA": "Змінити"
+  },
+  "ModalDeleteHead" : {
+    "RU": "Удалить",
+    "EN": "Delete",
+    "UA": "Видалити"
+  },
+  "ModalButtonDelete" : {
+    "RU": "Удалить",
+    "EN": "Delete",
+    "UA": "Видалити"
+  },
+  "ModalStory" : {
+    "RU": "Названия сюжета",
+    "EN": "Plot titles",
+    "UA": "Назва сюжету"
+  },
+  "ModalCheckboxRazom_number" : {
+    "RU": "Уникальный код",
+    "EN": "Unique code",
+    "UA": "Унікальний код"
+  },
+  "ModalButtonClose" : {
+    "RU": "Закрыть",
+    "EN": "close",
+    "UA": "Закрити"
+  },
+  "ModalTextArea" : {
+    "RU": "Вставьте данные через пробел",
+    "EN": "Insert data separated by a space",
+    "UA": "Вставте дані через пробіл"
+  },
+  "ButtonHiden" : {
+    "RU": "Скрыть",
+    "EN": "Hide",
+    "UA": "Приховати"
+  },
+  "ChangeLenguage" : {
+    "RU" : "Смена языка",
+    "EN" : "Switch language",
+    "UA" : "Зміна мови"
+  },
+  "PlaceholderSearch": {
+    "RU" : "Поиск по таблице",
+    "EN" : "Table search",
+    "UA" : "Пошук за таблицею"
+  },
+  "ButtonForReach": {
+    "RU" : "Добавить",
+    "EN" : "Add",
+    "UA" : "Додати"
+  },
+  "TextReachCity": {
+    "RU": "Город",
+    "EN": "City",
+    "UA": "Місто"
+  },"Reach" : {
+    "RU": "Охват",
+    "EN": "Reach",
+    "UA": "Охоплення"
+  },
+  "Period" : {
+    "RU": "Период",
+    "EN": "Period",
+    "UA": "Період"
+  },
+    "Fruqency" : {
+    "RU": "Частота",
+    "EN": "Frequency",
+    "UA": "Частота"
+  },
+  "ButtonExportExcel" : {
+    "RU": "Экспорт в Excel",
+    "EN": "Export to Excel",
+    "UA": "Експортувати в Excel"
+  }
+}

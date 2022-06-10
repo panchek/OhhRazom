@@ -1,0 +1,97 @@
+{
+  "HeadTextAdvanceSearch" : {
+    "RU": "Вставьте данные из Excel",
+    "EN": "Insert data from Excel",
+    "UA": "Вставте дані із Excel"
+  },
+  "PlaceHolder" : {
+    "RU": "Поиск",
+    "EN": "Search",
+    "UA": "Пошук"
+  },
+  "ButtonAdvanceSearch" : {
+    "RU": "Поиск",
+    "EN": "Search",
+    "UA": "Пошук"
+  },
+  "HeadTextFilterCity" : {
+    "RU": "Фильтр по городам",
+    "EN": "Filter by city",
+    "UA": "Фільтр по містах"
+  },
+  "ButtonFilterCity" : {
+    "RU": "Фильтровать по городам",
+    "EN": "Filter by cities",
+    "UA": "Фільтрувати по містах"
+  },
+  "HeadTextFilterFormat" : {
+    "RU": "Фильтр по формату",
+    "EN": "Filter by format",
+    "UA": "Фільтр за форматом"
+  },
+  "ButtonFilterFormat" : {
+    "RU": "Фильтровать по формату",
+    "EN": "Filter by format",
+    "UA": "Фільтрувати за форматом"
+  },
+  "HeadTextFilterType" : {
+    "RU": "Фильтр по типу",
+    "EN": "Filter by type",
+    "UA": "Фільтр за типом"
+  },
+  "ButtonFilterType" : {
+    "RU": "Фильтровать по типу",
+    "EN": "Filter by Type",
+    "UA": "Фільтрувати за типом"
+  },
+  "HeadTextChooseProduct" : {
+    "RU": "Выбрать продукт",
+    "EN": "Select product",
+    "UA": "Вибрати продукт"
+  },
+  "ButtonChooseProduct" : {
+    "RU": "Выбрать",
+    "EN": "Select",
+    "UA": "Вибрати"
+  },
+  "TextNumberContactor" : {
+    "RU": "Номер подрядчика",
+    "EN": "Contractor number",
+    "UA": "Номер підрядника"
+  },
+  "RazomCode" : {
+    "RU": "Уникальный код кампании",
+    "EN": "Unique campaign code",
+    "UA": "Унікальний код кампанії"
+  },
+  "ButtonClose" : {
+    "RU": "Закрыть",
+    "EN": "Close",
+    "UA": "Закрити"
+  },
+  "ButtonChooseAll" : {
+    "RU": "Выбрать всё",
+    "EN": "Choose all",
+    "UA": "Вибрати все"
+  },
+  "HeadTextChooseProductClient" : {
+    "RU": "Выбор рекламной кампании",
+    "EN": "Choosing an advertising campaign",
+    "UA": "Вибір рекламної кампанії"
+  },
+  "Reach" : {
+    "RU": "Охват",
+    "EN": "Reach",
+    "UA": "Охоплення"
+  },
+  "Period" : {
+    "RU": "Период",
+    "EN": "Period",
+    "UA": "Період"
+  },
+    "Fruqency" : {
+    "RU": "Частота",
+    "EN": "Frequency",
+    "UA": "Частота"
+  }
+}

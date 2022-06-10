@@ -1,0 +1,81 @@
+{
+  "Coordinate": {
+    "RU": "Координаты",
+    "EN": "Coordinates",
+    "UA": "Координати"
+  },
+  "SelfNumber": {
+    "RU": "Номер подрядчика",
+    "EN": "Contractor number",
+    "UA": "Номер підрядника"
+  },
+  "Type": {
+    "RU": "Тип",
+    "EN": "Type",
+    "UA": "Тип"
+  },
+  "Format": {
+    "RU": "Формат",
+    "EN": "Format",
+    "UA": "Формат"
+  },"City": {
+    "RU": "Город",
+    "EN": "City",
+    "UA": "Місто"
+  },"Side": {
+    "RU": "Сторона",
+    "EN": "Side",
+    "UA": "Сторона"
+  },
+  "Contactor": {
+    "RU": "Подрядчик",
+    "EN": "Contractor",
+    "UA": "Підрядник"
+  },
+
+  "PlaceHolderAdressUA": {
+    "RU": "Адрес UA",
+    "EN": "Address UA",
+    "UA": "Адреса UA"
+  },
+  "Adress": {
+    "RU": "Адрес",
+    "EN": "Address",
+    "UA": "Адреса"
+  },
+  "PlaceHolderAdressRU": {
+    "RU": "Адрес RU",
+    "EN": "Address RU",
+    "UA": "Адреса RU"
+  },
+  "PlaceHolderAdressEN": {
+    "RU": "Адрес EN",
+    "EN": "Address EN",
+    "UA": "Адреса EN"
+  },
+  "PlaceHolderContactorNumb": {
+    "RU": "Номер",
+    "EN": "Number",
+    "UA": "Номер"
+  },
+  "PlaceHolderRotation": {
+    "RU": "Угол",
+    "EN": "Rotation",
+    "UA": "Кут"
+  },
+  "Rotation": {
+    "RU": "Угол",
+    "EN": "Rotation",
+    "UA": "Кут"
+  },
+  "ButtonAddMark": {
+    "RU": "Добавить плоскость",
+    "EN": "Add media",
+    "UA": "Додати площину"
+  },
+  "ButtonBack": {
+    "RU": "Назад",
+    "EN": "Back",
+    "UA": "Назад"
+  }
+}

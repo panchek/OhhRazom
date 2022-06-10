@@ -1,0 +1,138 @@
+{% extends "ModalWindowAdmin.html" %}
+
+{% block table %}
+<script>
+		var Numb = 0;
+		var Roats = 0;
+		var colorDef = "";
+        function GoToMap(x, y,NumbRazom,Roat,clolorDefault){
+			map.setView(new L.LatLng(x, y), 18);
+			console.log(' -- ',Numb,' -- ', Roats, '-- ' , colorDef);
+			    var propertyName = 'background-color';
+			    $(".my-div-icon-"+Numb).css(propertyName, colorDef);
+			    //$(".my-div-icon-"+Numb).css({'-moz-border-radius': '50%','-webkit-border-radius': '50%','-khtml-border-radius': '50%','text-align': 'center', 'background':'green','background-image':' url(../img/marker/fowr.png)','background-size': 'cover'});
+    			Numb = NumbRazom;
+    			colorDef = clolorDefault;//"icon"+Numb
+    			var propertyName = 'background-color';
+    			var colo = '#FFFF00'
+    			$(".my-div-icon-"+Numb).css(propertyName, colo);
+    			//$(".my-div-icon-"+Numb).css({'-moz-border-radius': '50%','-webkit-border-radius': '50%','-khtml-border-radius': '50%','text-align': 'center', 'background':'green','background-image':' url(../img/marker/fowr.png)','background-size': 'cover'});
+    			//$("icon"+Numb).css({});
+			//console.log(' -- ',Numb,' -- ', Roats, '-- ' , colorDef);
+        }
+
+
+        $("#Back_center").bind("click", function() {
+            var propertyName = 'background-color';
+            console.log(' -- ',Numb,' -- ', Roats, '-- ' , colorDef);
+                $(".my-div-icon-"+Numb).css(propertyName, colorDef);
+
+            });
+    </script>
+    <table id = "all_table">
+  	    <thead >
+  			<tr>
+                {% if lenguage == 'RU' %}
+                    <th>{{tableNameHead.Number.RU}}</th>
+                    <th>{{tableNameHead.city.RU}}</th>
+                    <th>{{tableNameHead.contactor.RU}}</th>
+                    <th>{{tableNameHead.adress.RU}}</th>
+                    <th>doors</th>
+                    <th>{{tableNameHead.SelfNumberCont.RU}}</th>
+                    <th>{{tableNameHead.Razom_number.RU}}</th>
+                    <th>{{tableNameHead.type.RU}}</th>
+                    <th>{{tableNameHead.format.RU}}</th>
+                    <th>{{tableNameHead.side.RU}}</th>
+                    <th>OTS</th>
+                    <th>GRP</th>
+                    <th>{{tableNameHead.story.RU}}</th>
+                {% elif lenguage == 'EN' %}
+                    <th>{{tableNameHead.Number.EN}}</th>
+                    <th>{{tableNameHead.city.EN}}</th>
+                    <th>{{tableNameHead.contactor.EN}}</th>
+                    <th>{{tableNameHead.adress.EN}}</th>
+                    <th>doors</th>
+                    <th>{{tableNameHead.SelfNumberCont.EN}}</th>
+                    <th>{{tableNameHead.Razom_number.EN}}</th>
+                    <th>{{tableNameHead.type.EN}}</th>
+                    <th>{{tableNameHead.format.EN}}</th>
+                    <th>{{tableNameHead.side.EN}}</th>
+                    <th>OTS</th>
+                    <th>GRP</th>
+                    <th>{{tableNameHead.story.EN}}</th>
+                {% elif lenguage == 'UA' %}
+                    <th>{{tableNameHead.Number.UA}}</th>
+                    <th>{{tableNameHead.city.UA}}</th>
+                    <th>{{tableNameHead.contactor.UA}}</th>
+                    <th>{{tableNameHead.adress.UA}}</th>
+                    <th>doors</th>
+                    <th>{{tableNameHead.SelfNumberCont.UA}}</th>
+                    <th>{{tableNameHead.Razom_number.UA}}</th>
+                    <th>{{tableNameHead.type.UA}}</th>
+                    <th>{{tableNameHead.format.UA}}</th>
+                    <th>{{tableNameHead.side.UA}}</th>
+                    <th>OTS</th>
+                    <th>GRP</th>
+                    <th>{{tableNameHead.story.UA}}</th>
+                {% endif %}
+  		    </tr>
+  		</thead>
+  		<tbody>
+        {% for i in Program %}
+            {% if forloop.counter > 20 %}
+                {% if i.Grade == 1 %}
+                    <tr class="hide" style = "background:#32CD32" ondblclick="GoToMap({{i.Razom_number.lat}}, {{i.Razom_number.lng}} , {{i.Razom_number.Razom_number}} ,{{i.Razom_number.route}}, '{{i.story.color}}')">
+                {% elif i.Grade == 2 %}
+                    <tr class="hide" style = "background:#FFA07A" ondblclick="GoToMap({{i.Razom_number.lat}}, {{i.Razom_number.lng}} , {{i.Razom_number.Razom_number}} ,{{i.Razom_number.route}}, '{{i.story.color}}')">
+                {% else %}
+                    <tr class="hide" ondblclick="GoToMap({{i.Razom_number.lat}}, {{i.Razom_number.lng}} , {{i.Razom_number.Razom_number}} ,{{i.Razom_number.route}}, '{{i.story.color}}')">
+                {% endif %}
+            {% else %}
+                  {% if i.Grade == 1 %}
+                    <tr style = "background:#32CD32"  ondblclick="GoToMap({{i.Razom_number.lat}}, {{i.Razom_number.lng}} , {{i.Razom_number.Razom_number}} ,{{i.Razom_number.route}}, '{{i.story.color}}')">
+                {% elif i.Grade == 2 %}
+                    <tr style = "background:#FFA07A" ondblclick="GoToMap({{i.Razom_number.lat}}, {{i.Razom_number.lng}} , {{i.Razom_number.Razom_number}} ,{{i.Razom_number.route}}, '{{i.story.color}}')">
+                {% else %}
+                    <tr ondblclick="GoToMap({{i.Razom_number.lat}}, {{i.Razom_number.lng}} , {{i.Razom_number.Razom_number}} ,{{i.Razom_number.route}}, '{{i.story.color}}')">
+                {% endif %}
+            {% endif%}
+                <td>{{ forloop.counter }}</td>
+            {% if lenguage == 'RU' %}
+                <td>{{i.Razom_number.city_standart.city_standart_RU}}</td>
+                <td>{{i.Razom_number.Contractor.Contractor_RU}}</td>
+                <td>{{i.Razom_number.adress.adress_RU}} {{i.Razom_number.house}} {{i.Razom_number.loc.Location_RU}}</td>
+            {% elif lenguage == 'EN' %}
+                <td>{{i.Razom_number.city_standart.city_standart_EN}}</td>
+                <td>{{i.Razom_number.Contractor.Contractor_EN}}</td>
+                <td>{{i.Razom_number.adress.adress_EN}} {{i.Razom_number.house}} {{i.Razom_number.loc.Location_EN}}</td>
+            {% elif lenguage == 'UA' %}
+                <td>{{i.Razom_number.city_standart.city_standart_UA}}</td>
+                <td>{{i.Razom_number.Contractor.Contractor_UA}}</td>
+                <td>{{i.Razom_number.adress.adress_UA}} {{i.Razom_number.house}} {{i.Razom_number.loc.Location_UA}}</td>
+            {% endif %}
+                <td>{{i.Razom_number.doors}}</td>
+                <td>{{i.Razom_number.Self_number}}</td>
+                <td>{{i.Razom_number.Razom_number}}</td>
+            {% if lenguage == 'RU' %}
+                <td>{{i.Razom_number.type.typeRU}}</td>
+            {% elif lenguage == 'EN' %}
+                <td>{{i.Razom_number.type.typeEN}}</td>
+            {% elif lenguage == 'UA' %}
+                <td>{{i.Razom_number.type.typeUA}}</td>
+            {% endif %}
+                <td>{{i.Razom_number.format.format}}</td>
+                <td>{{i.Razom_number.side.side}}</td>
+                <td>{{i.Razom_number.OTS}}</td>
+                <td>{{i.Razom_number.GRP}}</td>
+                <td style="background:{{i.story.color}};color:#FFFFFF">{{i.story.story}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+  	</table>
+
+    <script>
+        table = document.getElementById('all_table');
+                new Tablesort(table);
+    </script>
+
+{% endblock %}

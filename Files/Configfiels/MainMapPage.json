@@ -1,0 +1,177 @@
+{
+  "HeadFilter" : {
+    "RU": "Параметры фильтра",
+    "EN": "Filter options",
+    "UA": "Параметри фільтра"
+  },
+  "ParamFilterCity" : {
+    "RU": "Город",
+    "EN": "City",
+    "UA": "Місто"
+  },
+  "ParamFilterFormat" : {
+    "RU": "Формат",
+    "EN": "Format",
+    "UA": "Формат"
+  },
+  "ParamFilterType" : {
+    "RU": "Тип",
+    "EN": "Type",
+    "UA": "Тип"
+  },
+  "ParamFilterStory" : {
+    "RU": "Сюжет",
+    "EN": "Visual",
+    "UA": "Сюжет"
+  },
+  "ParamFilterProduct" : {
+    "RU": "Продукт",
+    "EN": "Product",
+    "UA": "Продукт"
+  },
+  "ParamCountAll" : {
+    "RU": "Общее количество носителей",
+    "EN": "Total number of media",
+    "UA": "Загальна кількість носіїв"
+  },
+  "ParamCountLike" : {
+    "RU": "Количество нравится",
+    "EN": "Like",
+    "UA": "Кількість подобається"
+  },
+  "ParamCountDislike" : {
+    "RU": "Количество не нравится",
+    "EN": "Dislike ",
+    "UA": "Кількість не подобається"
+  },
+  "ButtonResetFilter" : {
+    "RU": "Сброс фильтра",
+    "EN": "Reset filter",
+    "UA": "Скидання фільтра"
+  },
+  "ButtonPersonalCabinet" : {
+    "RU": "Личный кабинет",
+    "EN": "Personal cabinet",
+    "UA": "Особистий кабінет"
+  },
+  "Stories" : {
+    "RU": "Сюжеты",
+    "EN": "Visuals",
+    "UA": "Сюжети"
+  },
+  "ButtonOutStory" : {
+    "RU": "Отобразить сюжет",
+    "EN": "Display visual",
+    "UA": "Відобразити сюжет"
+  },
+  "ButtonOpenResearch" : {
+    "RU": "Расширенный поиск",
+    "EN": "Advanced Search",
+    "UA": "Розширений пошук"
+  },
+  "ButtonFilterCity" : {
+    "RU": "Фильтр по городам",
+    "EN": "Filter by city",
+    "UA": "Фільтр по містах"
+  },
+  "ButtonFilterFormat" : {
+    "RU": "Фильтр по формату",
+    "EN": "Filter by format",
+    "UA": "Фільтр за форматом"
+  },
+  "ButtonFilterType" : {
+    "RU": "Фильтр по типу",
+    "EN": "Filter by type",
+    "UA": "Фільтр за типом"
+  },
+  "ButtonChooseProduct" : {
+    "RU": "Выбрать продукт",
+    "EN": "Select product",
+    "UA": "Вибрати продукт"
+  },
+  "ButtonOutdoors" : {
+    "RU": "Вне дорс",
+    "EN": "Outside Doors",
+    "UA": "Поза дорс"
+  },
+  "ButtonLike" : {
+    "RU": "Нравится",
+    "EN": "Like",
+    "UA": "Подобається"
+  },
+  "ButtonDislike" : {
+    "RU": "Не нравится",
+    "EN": "Dislike",
+    "UA": "Не подобається"
+  },
+  "ButtonAll" : {
+    "RU": "Все",
+    "EN": "All",
+    "UA": "Усе"
+  },
+  "ButtonExportExcel" : {
+    "RU": "Экспорт в Excel",
+    "EN": "Export to Excel",
+    "UA": "Експортувати в Excel"
+  },
+  "ButtonShowAll" : {
+    "RU": "Показать все",
+    "EN": "Show all",
+    "UA": "Показати все"
+  },
+  "ButtonHidden" : {
+    "RU": "Скрыть",
+    "EN": "Hide",
+    "UA": "Приховати"
+  },
+  "ButtonResetCenter" : {
+    "RU": "Сбросить центрирование",
+    "EN": "Reset centering",
+    "UA": "Cкинути центрування"
+  },
+  "PlacholderSearch" : {
+    "RU": "Поиск по таблице",
+    "EN": "Table search",
+    "UA": "Пошук за таблицею"
+  },
+  "SelectChoose" : {
+    "RU": "Выберите",
+    "EN": "Select",
+    "UA": "Оберіть"
+  },
+  "ChangeLenguage": {
+    "RU" : "Смена языка",
+    "EN" : "Switch language",
+    "UA" : "Зміна мови"
+  },
+  "ButtonChooseProductClient" : {
+    "RU": "Выбор рекламной кампании",
+    "EN": "Choosing an advertising campaign",
+    "UA": "Вибір рекламної кампанії"
+  },
+   "TextReachCity": {
+    "RU": "Город",
+    "EN": "City",
+    "UA": "Місто"
+  },
+  "Reach" : {
+    "RU": "Охват",
+    "EN": "Reach",
+    "UA": "Охоплення"
+  },
+  "Period" : {
+    "RU": "Период",
+    "EN": "Period",
+    "UA": "Період"
+  },
+    "Fruqency" : {
+    "RU": "Частота",
+    "EN": "Frequency",
+    "UA": "Частота"
+  },
+  "ButtonRF" : {
+    "RU": "Охват и частота",
+    "EN": "Reach and Frequency",
+    "UA": "Охоплення та частота"
+  }
+}

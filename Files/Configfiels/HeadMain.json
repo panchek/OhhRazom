@@ -1,0 +1,46 @@
+{
+  "Contact" : {
+    "RU": "Контакты",
+    "EN": "Contacts",
+    "UA": "Контакти"
+  },
+  "Telefon" : {
+    "RU": "Телефон",
+    "EN": "Phone number",
+    "UA": "Телефон"
+  },
+  "Mail" : {
+    "RU": "Почта",
+    "EN": "Mail",
+    "UA": "Пошта"
+  },
+  "WebSiteAC" : {
+    "RU": "Сайт",
+    "EN": "Website",
+    "UA": "Сайт"
+  },"Adress" : {
+    "RU": "Адрес",
+    "EN": "Address",
+    "UA": "Адреса"
+  },
+  "Developer" : {
+    "RU": "Разработчик",
+    "EN": "Developer",
+    "UA": "Розробник"
+  },
+  "TextForButtonExit" : {
+    "RU": "Для выхода нажмите на кнопку",
+    "EN": "To exit press the button",
+    "UA": "Для виходу натисніть кнопку"
+  },
+  "ButtonExit" : {
+    "RU": "Выход",
+    "EN": "Exit",
+    "UA": "Вихід"
+  },
+  "NameDeveloper" : {
+    "RU": "Мельник Д.В.",
+    "EN": "Melnyk Dmytro",
+    "UA": "Мельник Д.В."
+  }
+}

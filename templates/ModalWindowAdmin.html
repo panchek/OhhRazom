@@ -1,0 +1,403 @@
+
+{% extends "Admin.html" %}
+
+{% block modalwindow %}
+  <!-- Расширеный поиск-->
+  <div class="modal fade" id="search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">
+              {% if lenguage == 'RU' %}
+                    {{TranslateModalWindow.HeadTextAdvanceSearch.RU}}
+                {% elif lenguage == 'EN' %}
+                    {{TranslateModalWindow.HeadTextAdvanceSearch.EN}}
+                {% elif lenguage == 'UA' %}
+                    {{TranslateModalWindow.HeadTextAdvanceSearch.UA}}
+                {% endif %}
+              </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action ="/filter/AdvandcedSearch" method ="POST">
+              {% csrf_token %}
+                  <p>
+                        <input type="radio" name="search"  value="doors" checked /> Doors
+                      {% if lenguage == 'RU' %}
+                          <input type="radio" name="search" value="Self_number" /> {{TranslateModalWindow.TextNumberContactor.RU}}
+                        {% elif lenguage == 'EN' %}
+                            <input type="radio" name="search" value="Self_number" /> {{TranslateModalWindow.TextNumberContactor.EN}}
+                        {% elif lenguage == 'UA' %}
+                            <input type="radio" name="search" value="Self_number" /> {{TranslateModalWindow.TextNumberContactor.UA}}
+                        {% endif %}
+                    {% if lenguage == 'RU' %}
+                      <input type="radio" name="search" value="Razom_number" /> {{TranslateModalWindow.RazomCode.RU}}
+                    {% elif lenguage == 'EN' %}
+                       <input type="radio" name="search" value="Razom_number" /> {{TranslateModalWindow.RazomCode.EN}}
+                    {% elif lenguage == 'UA' %}
+                        <input type="radio" name="search" value="Razom_number" /> {{TranslateModalWindow.RazomCode.UA}}
+                    {% endif %}
+
+                  {% if lenguage == 'RU' %}
+                      <textarea class="form-control rounded-0" rows="10" name="big_search" placeholder = "{{TranslateModalWindow.PlaceHolder.RU}}"></textarea>
+                    {% elif lenguage == 'EN' %}
+                       <textarea class="form-control rounded-0" rows="10" name="big_search" placeholder = "{{TranslateModalWindow.PlaceHolder.EN}}"></textarea>
+                    {% elif lenguage == 'UA' %}
+                        <textarea class="form-control rounded-0" rows="10" name="big_search" placeholder = "{{TranslateModalWindow.PlaceHolder.UA}}"></textarea>
+                    {% endif %}
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                {% if lenguage == 'RU' %}
+                    {{TranslateModalWindow.ButtonClose.RU}}
+                {% elif lenguage == 'EN' %}
+                    {{TranslateModalWindow.ButtonClose.EN}}
+                {% elif lenguage == 'UA' %}
+                    {{TranslateModalWindow.ButtonClose.UA}}
+                {% endif %}
+            </button>
+            <button  class="btn btn-{{color.color_bootstrap}}" name="big_find">
+                {% if lenguage == 'RU' %}
+                    {{TranslateModalWindow.ButtonAdvanceSearch.RU}}
+                {% elif lenguage == 'EN' %}
+                    {{TranslateModalWindow.ButtonAdvanceSearch.EN}}
+                {% elif lenguage == 'UA' %}
+                    {{TranslateModalWindow.ButtonAdvanceSearch.UA}}
+                {% endif %}</button>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Фильтр по городам-->
+  <div class="modal fade" id="filt_city" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">
+              {% if lenguage == 'RU' %}
+                    {{TranslateModalWindow.HeadTextFilterCity.RU}}
+                {% elif lenguage == 'EN' %}
+                    {{TranslateModalWindow.HeadTextFilterCity.EN}}
+                {% elif lenguage == 'UA' %}
+                    {{TranslateModalWindow.HeadTextFilterCity.UA}}
+                {% endif %}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form method="POST" action = "/filter/city">
+          {% csrf_token %}
+        <div class="modal-body anyClass ">
+                <div id = "citychek">
+                  {% if lenguage == 'RU' %}
+                {% for i in filterCity%}
+                  <input type="checkbox" class = "form-check-input ml-2" name = "for_city" value = "{{i.id}}">
+                  <label class = "form-check-label ml-4" for="{{i.id}}">{{i.city_standart_RU}}</label><br/>
+                {%endfor%}
+            {% elif lenguage == 'EN' %}
+                {% for i in filterCity%}
+                  <input type="checkbox" class = "form-check-input ml-2" name = "for_city" value = "{{i.id}}">
+                  <label class = "form-check-label ml-4" for="{{i.id}}">{{i.city_standart_EN}}</label><br/>
+                {%endfor%}
+            {% elif lenguage == 'UA' %}
+                {% for i in filterCity%}
+                  <input type="checkbox" class = "form-check-input ml-2" name = "for_city" value = "{{i.id}}">
+                  <label class = "form-check-label ml-4" for="{{i.id}}">{{i.city_standart_UA}}</label><br/>
+                {%endfor%}
+            {% endif %}
+                </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+              {% if lenguage == 'RU' %}
+                    {{TranslateModalWindow.ButtonClose.RU}}
+                {% elif lenguage == 'EN' %}
+                    {{TranslateModalWindow.ButtonClose.EN}}
+                {% elif lenguage == 'UA' %}
+                    {{TranslateModalWindow.ButtonClose.UA}}
+                {% endif %}</button>
+          <button type="button" class="btn btn-{{color.color_bootstrap}}" onclick="selectAll(this,'citychek')">
+              {% if lenguage == 'RU' %}
+                    {{TranslateModalWindow.ButtonChooseAll.RU}}
+                {% elif lenguage == 'EN' %}
+                    {{TranslateModalWindow.ButtonChooseAll.EN}}
+                {% elif lenguage == 'UA' %}
+                    {{TranslateModalWindow.ButtonChooseAll.UA}}
+                {% endif %}
+          </button>
+          <button class="btn btn-{{color.color_bootstrap}}" name="filt_for_city">
+              {% if lenguage == 'RU' %}
+                    {{TranslateModalWindow.ButtonFilterCity.RU}}
+                {% elif lenguage == 'EN' %}
+                    {{TranslateModalWindow.ButtonFilterCity.EN}}
+                {% elif lenguage == 'UA' %}
+                    {{TranslateModalWindow.ButtonFilterCity.UA}}
+                {% endif %}</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- Фильтр по форматам-->
+  <div class="modal fade" id="format" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">
+              {% if lenguage == 'RU' %}
+                    {{TranslateModalWindow.HeadTextFilterFormat.RU}}
+                {% elif lenguage == 'EN' %}
+                    {{TranslateModalWindow.HeadTextFilterFormat.EN}}
+                {% elif lenguage == 'UA' %}
+                    {{TranslateModalWindow.HeadTextFilterFormat.UA}}
+                {% endif %}
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body anyClass " id = "test">
+            <form method="POST" class = "1" action = "/filter/format">
+                {% csrf_token %}
+                <div id = "formatchek">
+                    {% for i in filterFormat%}
+                      <input type="checkbox" class = "form-check-input ml-2" name = "for_format" value = "{{i.id}}">
+                      <label class = "form-check-label ml-4" for="{{i.id}}">{{i.format}}</label><br/>
+                    {%endfor%}
+                  </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+              {% if lenguage == 'RU' %}
+                    {{TranslateModalWindow.ButtonClose.RU}}
+                {% elif lenguage == 'EN' %}
+                    {{TranslateModalWindow.ButtonClose.EN}}
+                {% elif lenguage == 'UA' %}
+                    {{TranslateModalWindow.ButtonClose.UA}}
+                {% endif %}
+          </button>
+          <button type="button" class="btn btn-{{color.color_bootstrap}}" onclick="selectAll(this,'formatchek')">
+              {% if lenguage == 'RU' %}
+                    {{TranslateModalWindow.ButtonChooseAll.RU}}
+                {% elif lenguage == 'EN' %}
+                    {{TranslateModalWindow.ButtonChooseAll.EN}}
+                {% elif lenguage == 'UA' %}
+                    {{TranslateModalWindow.ButtonChooseAll.UA}}
+                {% endif %}
+          </button>
+          <button class="btn btn-{{color.color_bootstrap}}" name="Filt_format">
+              {% if lenguage == 'RU' %}
+                    {{TranslateModalWindow.ButtonFilterFormat.RU}}
+                {% elif lenguage == 'EN' %}
+                    {{TranslateModalWindow.ButtonFilterFormat.EN}}
+                {% elif lenguage == 'UA' %}
+                    {{TranslateModalWindow.ButtonFilterFormat.UA}}
+                {% endif %}
+          </button>
+        </div>
+          </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Фильтр по Типу-->
+  <div class="modal fade" id="type" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">
+              {% if lenguage == 'RU' %}
+                    {{TranslateModalWindow.HeadTextFilterType.RU}}
+                {% elif lenguage == 'EN' %}
+                    {{TranslateModalWindow.HeadTextFilterType.EN}}
+                {% elif lenguage == 'UA' %}
+                    {{TranslateModalWindow.HeadTextFilterType.UA}}
+                {% endif %}
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body anyClass ">
+            <form method="POST" action = "/filter/type">
+                {% csrf_token %}
+                <div id = "typechek">
+                  {% if lenguage == 'RU' %}
+                {% for i in filterType%}
+                  <input type="checkbox" class = "form-check-input ml-2" name = "for_type" value = "{{i.id}}">
+                  <label class = "form-check-label ml-4" for="{{i.id}}">{{i.typeRU}}</label><br/>
+                {%endfor%}
+            {% elif lenguage == 'EN' %}
+                {% for i in filterType%}
+                  <input type="checkbox" class = "form-check-input ml-2" name = "for_type[]" value = "{{i.id}}">
+                  <label class = "form-check-label ml-4" for="{{i.id}}">{{i.typeEN}}</label><br/>
+                {%endfor%}
+            {% elif lenguage == 'UA' %}
+                {% for i in filterType%}
+                  <input type="checkbox" class = "form-check-input ml-2" name = "for_type[]" value = "{{i.id}}">
+                  <label class = "form-check-label ml-4" for="{{i.id}}">{{i.typeUA}}</label><br/>
+                {%endfor%}
+            {% endif %}
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+              {% if lenguage == 'RU' %}
+                    {{TranslateModalWindow.ButtonClose.RU}}
+                {% elif lenguage == 'EN' %}
+                    {{TranslateModalWindow.ButtonClose.EN}}
+                {% elif lenguage == 'UA' %}
+                    {{TranslateModalWindow.ButtonClose.UA}}
+                {% endif %}
+          </button>
+          <button type="button" class="btn btn-{{color.color_bootstrap}}" onclick="selectAll(this,'typechek')">
+              {% if lenguage == 'RU' %}
+                    {{TranslateModalWindow.ButtonChooseAll.RU}}
+                {% elif lenguage == 'EN' %}
+                    {{TranslateModalWindow.ButtonChooseAll.EN}}
+                {% elif lenguage == 'UA' %}
+                    {{TranslateModalWindow.ButtonChooseAll.UA}}
+                {% endif %}
+          </button>
+          <button class="btn btn-{{color.color_bootstrap}}" name="Filt_type">
+              {% if lenguage == 'RU' %}
+                    {{TranslateModalWindow.ButtonFilterType.RU}}
+                {% elif lenguage == 'EN' %}
+                    {{TranslateModalWindow.ButtonFilterType.EN}}
+                {% elif lenguage == 'UA' %}
+                    {{TranslateModalWindow.ButtonFilterType.UA}}
+                {% endif %}
+          </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Выбор рк-->
+  <div class="modal fade" id="chose_rk" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">
+              {% if lenguage == 'RU' %}
+                    {{TranslateModalWindow.HeadTextChooseProduct.RU}}
+                {% elif lenguage == 'EN' %}
+                    {{TranslateModalWindow.HeadTextChooseProduct.EN}}
+                {% elif lenguage == 'UA' %}
+                    {{TranslateModalWindow.HeadTextChooseProduct.UA}}
+                {% endif %}
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form method="POST" action = "/filter/ChooseRK">
+          {% csrf_token %}
+        <div class="modal-body anyClass ">
+                  <input type="radio" class = "form-check-input ml-2" name = "ch_rk" value = "null">
+                  <label class = "form-check-label ml-4" for="null">Ничего</label><br/>
+                  {% for i in MyAC%}
+                    <input type="radio" class = "form-check-input ml-2" name = "ch_rk" value = "{{i.id}}">
+                  <label class = "form-check-label ml-4" for="null">{{i.RK}}</label><br/>
+                  {%endfor%}
+               </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+              {% if lenguage == 'RU' %}
+                    {{TranslateModalWindow.ButtonClose.RU}}
+                {% elif lenguage == 'EN' %}
+                    {{TranslateModalWindow.ButtonClose.EN}}
+                {% elif lenguage == 'UA' %}
+                    {{TranslateModalWindow.ButtonClose.UA}}
+                {% endif %}
+          </button>
+          <button class="btn btn-{{color.color_bootstrap}}" name="to_chose_rk">
+              {% if lenguage == 'RU' %}
+                    {{TranslateModalWindow.ButtonChooseProduct.RU}}
+                {% elif lenguage == 'EN' %}
+                    {{TranslateModalWindow.ButtonChooseProduct.EN}}
+                {% elif lenguage == 'UA' %}
+                    {{TranslateModalWindow.ButtonChooseProduct.UA}}
+                {% endif %}</button>
+        </div>
+          </form>
+      </div>
+    </div>
+  </div>
+<!--Охваты -->
+    <div class="modal fade" id="Reach" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Reach and Frequency</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+             <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                {% if lenguage == 'RU' %}
+                                    {{TranslateBody.TextReachCity.RU}}
+                                {% elif lenguage == 'EN' %}
+                                    {{TranslateBody.TextReachCity.EN}}
+                                {% elif lenguage == 'UA' %}
+                                    {{TranslateBody.TextReachCity.UA}}
+                                {% endif %}
+                            </th>
+                           <th>
+                                {% if lenguage == 'RU' %}
+                                    {{TranslateBody.Reach.RU}}
+                                {% elif lenguage == 'EN' %}
+                                    {{TranslateBody.Reach.EN}}
+                                {% elif lenguage == 'UA' %}
+                                    {{TranslateBody.Reach.UA}}
+                                {% endif %}
+                            </th>
+                            <th>
+                                {% if lenguage == 'RU' %}
+                                    {{TranslateBody.Period.RU}}
+                                {% elif lenguage == 'EN' %}
+                                    {{TranslateBody.Period.EN}}
+                                {% elif lenguage == 'UA' %}
+                                    {{TranslateBody.Period.UA}}
+                                {% endif %}
+                            </th>
+                            <th>
+                                {% if lenguage == 'RU' %}
+                                    {{TranslateBody.Fruqency.RU}}
+                                {% elif lenguage == 'EN' %}
+                                    {{TranslateBody.Fruqency.EN}}
+                                {% elif lenguage == 'UA' %}
+                                    {{TranslateBody.Fruqency.UA}}
+                                {% endif %}
+                            </th>
+                        </tr>
+                </thead>
+                <tbody>
+             {% for i in Reach %}
+                     <tr>
+              {% if lenguage == 'RU' %}
+                     <td>{{i.city.city_standart_RU}}: </td> <td>{{i.reach}}%</td> <td>{{i.frequency}}</td> <td>{{i.period}}</td>
+                {% elif lenguage == 'EN' %}
+                     <td>{{i.city.city_standart_EN}}: </td> <td>{{i.reach}}%</td> <td>{{i.frequency}}</td> <td>{{i.period}}</td>
+                {% elif lenguage == 'UA' %}
+                    <td>{{i.city.city_standart_UA}}: </td> <td>{{i.reach}}%</td> <td>{{i.frequency}}</td> <td>{{i.period}}</td>
+                {% endif %}
+                     </tr>
+              {% endfor %}
+                </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!--Конец модальных окон -->
+{% endblock %}
+

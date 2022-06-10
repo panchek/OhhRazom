@@ -1,0 +1,1101 @@
+<html>
+{% load static %}
+	<head>
+    	<title>{{NameAgancy.client.agancy}}</title>
+		<meta charset="UTF-8">
+		<meta http-equiv=Pragma content=no cache>
+		<link rel="shortcut icon" href="{% static 'OhhRazom/image/icons/Logo_' %}{{ NameAgancy.client.agancy }}.png" type="img/logo.png">
+			<link rel="stylesheet" href="{% static 'OhhRazom/style/exit_data/js/lib_map/leaflet.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'OhhRazom/style/exit_data/css/for_table.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'OhhRazom/style/exit_data/css/for_img.css' %}">
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+		<link rel="stylesheet" type="text/css" href="{% static 'OhhRazom/style/exit_data/js/fancybox/jquery.fancybox.min.css' %}">
+		<script src="{% static 'OhhRazom/style/exit_data/js/fancybox/jquery.fancybox.min.js' %}"></script>
+		<script src="{% static 'OhhRazom/style/exit_data/js/search_table.js' %}"></script>
+		<script src="{% static 'OhhRazom/style/exit_data/js/hide.js' %}"></script>
+		<script src="{% static 'OhhRazom/style/exit_data/js/form.js' %}"></script>
+		<script src="{% static 'OhhRazom/style/exit_data/js/onchek.js' %}"></script>
+		<script src="{% static 'OhhRazom/style/exit_data/js/sort/tape.js' %}"></script>
+		<script src="{% static 'OhhRazom/style/exit_data/js/sort/spec/tablesort.js' %}"></script>
+		<script src="{% static 'OhhRazom/style/exit_data/js/sort/spec/dotsep.js' %}"></script>
+		<script src="{% static 'OhhRazom/style/exit_data/js/sort/spec/multibody.js' %}"></script>
+		<script src="{% static 'OhhRazom/style/exit_data/js/sort/spec/filesize.js' %}"></script>
+		<script src="{% static 'OhhRazom/style/exit_data/js/sort/spec/date.js' %}"></script>
+		<script src="{% static 'OhhRazom/style/exit_data/js/sort/spec/number.js' %}"></script>
+		<script src="{% static 'OhhRazom/style/exit_data/js/sort/spec/monthname.js' %}"></script>
+		<script src="{% static 'OhhRazom/style/exit_data/js/sort/src/tablesort.js' %}"></script>
+		<script src="{% static 'OhhRazom/style/exit_data/js/sort/src/sorts/tablesort.dotsep.js' %}"></script>
+		<script src="{% static 'OhhRazom/style/exit_data/js/sort/src/sorts/tablesort.filesize.js' %}"></script>
+		<script src="{% static 'OhhRazom/style/exit_data/js/sort/src/sorts/tablesort.date.js' %}"></script>
+		<script src="{% static 'OhhRazom/style/exit_data/js/sort/src/sorts/tablesort.number.js' %}"></script>
+		<script src="{% static 'OhhRazom/style/exit_data/js/sort/src/sorts/tablesort.monthname.js' %}"></script>
+		<script src="{% static 'OhhRazom/style/exit_data/js/lib_map/leaflet.js' %}"></script>
+		<link rel="stylesheet" href="{% static 'OhhRazom/style/exit_data/js/lib_map/clast/dist/MarkerCluster.css' %}" />
+		<link rel="stylesheet" href="{% static 'OhhRazom/style/exit_data/js/lib_map/clast/dist/MarkerCluster.Default.css' %}" />
+		<link rel="stylesheet" href="{% static 'OhhRazom/style/exit_data/js/lib_map/geo_cod/css/l.geosearch.css' %}" />
+		<script src="{% static 'OhhRazom/style/exit_data/js/lib_map/clast/dist/leaflet.markercluster-src.js' %}"></script>
+		<script src="{% static 'OhhRazom/style/exit_data/js/lib_map/geo_cod/js/l.control.geosearch.js' %}"></script>
+		<script src="{% static 'OhhRazom/style/exit_data/js/lib_map/leaflet.rotatedMarker.js' %}"></script>
+		<script src="{% static 'OhhRazom/style/exit_data/js/lib_map/geo_cod/js/l.geosearch.provider.openstreetmap.js' %}"></script>
+		<script src="{% static 'OhhRazom/style/exit_data/js/lib_map/mes/leaflet-ruler.js' %}"></script>
+		<link rel="stylesheet" href="{% static 'OhhRazom/style/exit_data/js/lib_map/mes/leaflet-ruler.css' %}" />
+		<script src="{% static 'OhhRazom/style/exit_data/js/lib_map/leaflet-gesture-handling.js' %}"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn9rV5EUjZh36Jf5Q-CDxm7drE84sBSVE" async defer></script>
+		<script src="https://unpkg.com/leaflet.gridlayer.googlemutant@latest/dist/Leaflet.GoogleMutant.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.9.4/leaflet-geocoder-mapzen.css">
+		<script src="https://www.nextzen.org/tangram/0.18.2/tangram.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-hash/0.2.1/leaflet-hash.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-geocoder-mapzen/1.9.4/leaflet-geocoder-mapzen.min.js"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+		<!-- jQuery and JS bundle w/ Popper.js -->
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" href="https://unpkg.com/leaflet-pegman@0.1.6/leaflet-pegman.css" />
+		<script src="https://unpkg.com/leaflet-pegman@0.1.6/leaflet-pegman.js"></script>
+
+
+		<style>
+	#all_table th {
+		padding-top: 12px;
+		padding-bottom: 12px;
+		text-align: left;
+		background-color: #<?=$color_web;?>;
+		color : white;
+	}
+	.for_info_window {
+		text-align: center;
+		overflow-y: scroll;
+		width: 100%;
+		height: 100%;
+		min-height:20px;
+		max-height: 180px;
+	}
+	.anyClass {
+		height:150px;
+		overflow-y: scroll;
+		}
+		@media screen and (max-width: 1680px) {
+		body{
+			font-size: 0.8rem;
+		}
+		#all_table {
+				font-size: 0.8rem;
+			}
+			.btn {
+				font-size: 0.8rem;
+			}
+				}
+		@media screen and (max-width: 1300px) {
+			body{
+				font-size: 0.7rem;
+			}
+			#all_table {
+					font-size: 0.7rem;
+				}
+			h3{
+				font-size: 0.9rem;
+			}
+			.btn {
+				font-size: 0.7rem;
+			}
+		}
+	#preloader_malc {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: rgba(0, 0, 0, .6);
+		z-index: 1000;
+		display: none;
+		}
+
+	#preloader_malc div {
+		background: #fff;
+		width: 260px;
+		height: 40px;
+		line-height: 40px;
+		border-radius: 8px;
+		font-family: arial;
+		font-size: 15px;
+		color: #111;
+		text-align: center;
+		box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+		position: fixed;
+		z-index: 999;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		margin: auto
+	}
+	.Like_form_mark{
+		margin: 0;
+	}
+	.Dislike_form_mark{
+		margin: 0;
+	}
+		</style>
+	</head>
+	<body>
+	<script>
+	                const crfLike = '{% csrf_token %}';
+	                const dislike = '{% csrf_token %}';
+					var locations;
+					const leng = '{{lenguage}}'
+					locations = [
+					{% if lenguage == 'RU' %}
+                        {%for i in CurrentAC %}
+                            [
+                            '{{ forloop.counter }}',
+                            '{{i.Razom_number.lat}}',
+                            '{{i.Razom_number.lng}}',
+                            '{{i.Razom_number.doors}}',
+                            '{{i.Razom_number.Self_number}}',
+                            '{{i.Razom_number.Razom_number}}',
+                            '{{i.Razom_number.type.typeRU}}',
+                            '{{i.Razom_number.format.format}}',
+                            '{{i.Razom_number.OTS}}',
+                            '{{i.Razom_number.GRP}}',
+                            '{{i.Razom_number.adress.adress_RU}}',
+                            '{{i.Razom_number.house}}',
+                            '{{i.Razom_number.city_standart.city_standart_RU}}',
+                            '{{i.story.color}}',
+                            '{{i.story.story}}',
+                            '{{i.Grade}}',
+                            '{{i.Razom_number.side.side}}',
+                            '{{i.Razom_number.loc.Location_RU}}',
+                            '{{i.Razom_number.Contractor.Contractor_RU}}',
+                            '{{i.Razom_number.route}}',
+                            '{{i.Razom_number.imagePhoto}}',
+                            '{{i.Razom_number.imageShema}}',
+                            ],
+                        {%endfor%}
+                        {% elif lenguage == 'EN' %}
+                            {%for i in CurrentAC %}
+                            [
+                            '{{ forloop.counter }}',
+                            '{{i.Razom_number.lat}}',
+                            '{{i.Razom_number.lng}}',
+                            '{{i.Razom_number.doors}}',
+                            '{{i.Razom_number.Self_number}}',
+                            '{{i.Razom_number.Razom_number}}',
+                            '{{i.Razom_number.type.typeRU}}',
+                            '{{i.Razom_number.format.format}}',
+                            '{{i.Razom_number.OTS}}',
+                            '{{i.Razom_number.GRP}}',
+                            '{{i.Razom_number.adress.adress_EN}}',
+                            '{{i.Razom_number.house}}',
+                            '{{i.Razom_number.city_standart.city_standart_EN}}',
+                            '{{i.story.color}}',
+                            '{{i.story.story}}',
+                            '{{i.Grade}}',
+                            '{{i.Razom_number.side.side}}',
+                            '{{i.Razom_number.loc.Location_EN}}',
+                            '{{i.Razom_number.Contractor.Contractor_EN}}',
+                            '{{i.Razom_number.route}}',
+                            '{{i.Razom_number.imagePhoto}}',
+                            '{{i.Razom_number.imageShema}}',
+                            ],
+                        {%endfor%}
+                        {% elif lenguage == 'UA' %}
+                            {%for i in CurrentAC %}
+                            [
+                            '{{ forloop.counter }}',
+                            '{{i.Razom_number.lat}}',
+                            '{{i.Razom_number.lng}}',
+                            '{{i.Razom_number.doors}}',
+                            '{{i.Razom_number.Self_number}}',
+                            '{{i.Razom_number.Razom_number}}',
+                            '{{i.Razom_number.type.typeRU}}',
+                            '{{i.Razom_number.format.format}}',
+                            '{{i.Razom_number.OTS}}',
+                            '{{i.Razom_number.GRP}}',
+                            '{{i.Razom_number.adress.adress_UA}}',
+                            '{{i.Razom_number.house}}',
+                            '{{i.Razom_number.city_standart.city_standart_UA}}',
+                            '{{i.story.color}}',
+                            '{{i.story.story}}',
+                            '{{i.Grade}}',
+                            '{{i.Razom_number.side.side}}',
+                            '{{i.Razom_number.loc.Location_UA}}',
+                            '{{i.Razom_number.Contractor.Contractor_UA}}',
+                            '{{i.Razom_number.route}}',
+                            '{{i.Razom_number.imagePhoto}}',
+                            '{{i.Razom_number.imageShema}}',
+                            ],
+                        {%endfor%}
+                    {% endif %}
+					];
+					var front_flag;
+					front_flag = 0;
+				</script>
+        <header>
+            {%for i in CurrentAC%}
+                {%if i.Grade == 1 %}
+                <input type="hidden" id="numb_for_flag_like{{i.Razom_number.Razom_number}}" name="flag_client" value = "1">
+                <input type="hidden" id="numb_for_flag_dislike{{i.Razom_number.Razom_number}}" name="flag_client" value = "null">
+                {% elif i.Grade == 2 %}
+                    <input type="hidden" id="numb_for_flag_like{{i.Razom_number.Razom_number}}" name="flag_client" value = "null">
+                    <input type="hidden" id="numb_for_flag_dislike{{i.Razom_number.Razom_number}}" name="flag_client" value = "2">
+                {%else%}
+                    <input type="hidden" id="numb_for_flag_like{{i.Razom_number.Razom_number}}" name="flag_client" value = "null">
+                    <input type="hidden" id="numb_for_flag_dislike{{i.Razom_number.Razom_number}}" name="flag_client" value = "null">
+                {%endif%}
+            {%endfor%}
+      <div class="collapse bg-{{color.color_bootstrap}}" id="navbarHeader" style="background:#{{ color.color_table }}">
+          <div class="row">
+            <div class="col-sm-8 col-md-7 py-4">
+              <h4 class="text-white ml-2">
+                  {% if lenguage == 'RU' %}
+                    {{TranslateHead.Contact.RU}}
+                {% elif lenguage == 'EN' %}
+                    {{TranslateHead.Contact.EN}}
+                {% elif lenguage == 'UA' %}
+                    {{TranslateHead.Contact.UA}}
+                {% endif %}
+              </h4></h4>
+              <p class="text-dark ml-2 mb-0">
+                            {% if lenguage == 'RU' %}
+                                {{TranslateHead.Telefon.RU}}
+                            {% elif lenguage == 'EN' %}
+                                {{TranslateHead.Telefon.EN}}
+                            {% elif lenguage == 'UA' %}
+                                {{TranslateHead.Telefon.UA}}
+                            {% endif %}:  044 495 2962<br/>
+							{% if lenguage == 'RU' %}
+                                {{TranslateHead.Mail.RU}}
+                            {% elif lenguage == 'EN' %}
+                                {{TranslateHead.Mail.EN}}
+                            {% elif lenguage == 'UA' %}
+                                {{TranslateHead.Mail.UA}}
+                            {% endif %}:  nb@rzm.com.ua<br/>
+							{% if lenguage == 'RU' %}
+                                {{TranslateHead.WebSiteAC.RU}}
+                            {% elif lenguage == 'EN' %}
+                                {{TranslateHead.WebSiteAC.EN}}
+                            {% elif lenguage == 'UA' %}
+                                {{TranslateHead.WebSiteAC.UA}}
+                            {% endif %}:  <a class="text-white" href = "//www.rzm.com.ua/">www.rzm.com.ua</a><br/>
+							{% if lenguage == 'RU' %}
+                                {{TranslateHead.Adress.RU}}
+                            {% elif lenguage == 'EN' %}
+                                {{TranslateHead.Adress.EN}}
+                            {% elif lenguage == 'UA' %}
+                                {{TranslateHead.Adress.UA}}
+                            {% endif %}:  ул. Семьи Праховых, 50
+							<p class="text-white">{% if lenguage == 'RU' %}
+                                {{TranslateHead.Developer.RU}}
+                            {% elif lenguage == 'EN' %}
+                                {{TranslateHead.Developer.EN}}
+                            {% elif lenguage == 'UA' %}
+                                {{TranslateHead.Developer.UA}}
+                            {% endif %}: {% if lenguage == 'RU' %}
+                                {{TranslateHead.NameDeveloper.RU}}
+                            {% elif lenguage == 'EN' %}
+                                {{TranslateHead.NameDeveloper.EN}}
+                            {% elif lenguage == 'UA' %}
+                                {{TranslateHead.NameDeveloper.UA}}
+                            {% endif %} dmytro.melnyk.it@gmail.com</p>
+							</p>
+            </div>
+            <div class="col-sm-4 offset-md-1 py-4">
+              <h4 class="text-white">{% if lenguage == 'RU' %}
+                                {{TranslateHead.TextForButtonExit.RU}}
+                            {% elif lenguage == 'EN' %}
+                                {{TranslateHead.TextForButtonExit.EN}}
+                            {% elif lenguage == 'UA' %}
+                                {{TranslateHead.TextForButtonExit.UA}}
+                            {% endif %}</h4>
+               <form action = "/account/exit/" method = "POST">
+                   {% csrf_token %}
+                    <button  class = "btn btn-light btn-lg" name = "forexit">
+                        {% if lenguage == 'RU' %}
+                                {{TranslateHead.ButtonExit.RU}}
+                            {% elif lenguage == 'EN' %}
+                                {{TranslateHead.ButtonExit.EN}}
+                            {% elif lenguage == 'UA' %}
+                                {{TranslateHead.ButtonExit.UA}}
+                            {% endif %}
+                    </button>
+                </form>
+            </div>
+          </div>
+        </div>
+        </div>
+      <div class="navbar navbar-dark bg-{{color.color_bootstrap}} box-shadow" >
+        <div class="container-fluid d-flex justify-content-between">
+          <a href="#" class="navbar-brand d-flex align-items-center">
+            <img src = "{% static 'OhhRazom/image/icons/Logo_' %}{{NameAgancy.client.agancy}}.png"  width="7%" height="7%">
+            <strong>{{NameAgancy.client.agancy}}</strong>
+          </a>
+            <div class="row">
+                <div class="col-md-5">
+                    <form action="ChangeLenguage"  class="navbar-toggler collapsed" method="POST" >
+                    {% if lenguage == 'RU' %}
+                        {{ BaseObjLen.ChangeLenguage.RU }}
+                    {% elif lenguage == 'EN' %}
+                        {{ BaseObjLen.ChangeLenguage.EN }}
+                    {% elif lenguage == 'UA' %}
+                        {{ BaseObjLen.ChangeLenguage.UA }}
+                    {% endif %}
+                <select name="Len" class="select_send_ajax selectpicker">
+                    {% if lenguage == 'RU' %}
+                        <option>RU</option>
+                        <option>EN</option>
+                        <option>UA</option>
+                    {% elif lenguage == 'EN' %}
+                        <option>EN</option>
+                        <option>RU</option>
+                        <option>UA</option>
+                    {% elif lenguage == 'UA' %}
+                        <option>UA</option>
+                        <option>EN</option>
+                        <option>RU</option>
+                    {% endif %}
+                </select>
+                  {% csrf_token %}
+             </form>
+                    <script>
+          $('.select_send_ajax').on('change', function() {
+              $(this.form).submit();
+            });
+
+            $('form').submit(function(event) { //Отправка всех форм
+            });
+      </script>
+                </div>
+                <div class="col-md-1"><button class="navbar-toggler collapsed bg-dark" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                </div>
+            </div>
+        </div>
+      </div>
+    </header>
+    <div class="modal fade" id="Reach" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Reach and Frequency</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                {% if lenguage == 'RU' %}
+                                    {{TranslateBody.TextReachCity.RU}}
+                                {% elif lenguage == 'EN' %}
+                                    {{TranslateBody.TextReachCity.EN}}
+                                {% elif lenguage == 'UA' %}
+                                    {{TranslateBody.TextReachCity.UA}}
+                                {% endif %}
+                            </th>
+                            <th>
+                                {% if lenguage == 'RU' %}
+                                    {{TranslateBody.Reach.RU}}
+                                {% elif lenguage == 'EN' %}
+                                    {{TranslateBody.Reach.EN}}
+                                {% elif lenguage == 'UA' %}
+                                    {{TranslateBody.Reach.UA}}
+                                {% endif %}
+                            </th>
+                            <th>
+                                {% if lenguage == 'RU' %}
+                                    {{TranslateBody.Period.RU}}
+                                {% elif lenguage == 'EN' %}
+                                    {{TranslateBody.Period.EN}}
+                                {% elif lenguage == 'UA' %}
+                                    {{TranslateBody.Period.UA}}
+                                {% endif %}
+                            </th>
+                            <th>
+                                {% if lenguage == 'RU' %}
+                                    {{TranslateBody.Fruqency.RU}}
+                                {% elif lenguage == 'EN' %}
+                                    {{TranslateBody.Fruqency.EN}}
+                                {% elif lenguage == 'UA' %}
+                                    {{TranslateBody.Fruqency.UA}}
+                                {% endif %}
+                            </th>
+                        </tr>
+                </thead>
+                <tbody>
+             {% for i in Reach %}
+                     <tr>
+              {% if lenguage == 'RU' %}
+                     <td>{{i.city.city_standart_RU}}: </td> <td>{{i.reach}}%</td> <td>{{i.frequency}}</td> <td>{{i.period}}</td>
+                {% elif lenguage == 'EN' %}
+                     <td>{{i.city.city_standart_EN}}: </td> <td>{{i.reach}}%</td> <td>{{i.frequency}}</td> <td>{{i.period}}</td>
+                {% elif lenguage == 'UA' %}
+                    <td>{{i.city.city_standart_UA}}: </td> <td>{{i.reach}}%</td> <td>{{i.frequency}}</td> <td>{{i.period}}</td>
+                {% endif %}
+                     </tr>
+              {% endfor %}
+                </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Расширеный поиск-->
+  <div class="modal fade" id="search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">
+              {% if lenguage == 'RU' %}
+                    {{TranslateModalWindow.HeadTextAdvanceSearch.RU}}
+                {% elif lenguage == 'EN' %}
+                    {{TranslateModalWindow.HeadTextAdvanceSearch.EN}}
+                {% elif lenguage == 'UA' %}
+                    {{TranslateModalWindow.HeadTextAdvanceSearch.UA}}
+                {% endif %}
+              </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action ="/filter/AdvandcedSearch" method ="POST">
+                  <p>
+                    <input type="radio" name="search"  value="doors" checked /> Doors
+                      {% if lenguage == 'RU' %}
+                          <input type="radio" name="search" value="Self_number" /> {{TranslateModalWindow.TextNumberContactor.RU}}
+                        {% elif lenguage == 'EN' %}
+                            <input type="radio" name="search" value="Self_number" /> {{TranslateModalWindow.TextNumberContactor.EN}}
+                        {% elif lenguage == 'UA' %}
+                            <input type="radio" name="search" value="Self_number" /> {{TranslateModalWindow.TextNumberContactor.UA}}
+                        {% endif %}
+                    {% if lenguage == 'RU' %}
+                      <input type="radio" name="search" value="Razom_number" /> {{TranslateModalWindow.RazomCode.RU}}
+                    {% elif lenguage == 'EN' %}
+                       <input type="radio" name="search" value="Razom_number" /> {{TranslateModalWindow.RazomCode.EN}}
+                    {% elif lenguage == 'UA' %}
+                        <input type="radio" name="search" value="Razom_number" /> {{TranslateModalWindow.RazomCode.UA}}
+                    {% endif %}
+
+                  {% if lenguage == 'RU' %}
+                      <textarea class="form-control rounded-0" rows="10" name="big_search" placeholder = "{{TranslateModalWindow.PlaceHolder.RU}}"></textarea>
+                    {% elif lenguage == 'EN' %}
+                       <textarea class="form-control rounded-0" rows="10" name="big_search" placeholder = "{{TranslateModalWindow.PlaceHolder.EN}}"></textarea>
+                    {% elif lenguage == 'UA' %}
+                        <textarea class="form-control rounded-0" rows="10" name="big_search" placeholder = "{{TranslateModalWindow.PlaceHolder.UA}}"></textarea>
+                    {% endif %}
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                {% if lenguage == 'RU' %}
+                    {{TranslateModalWindow.ButtonClose.RU}}
+                {% elif lenguage == 'EN' %}
+                    {{TranslateModalWindow.ButtonClose.EN}}
+                {% elif lenguage == 'UA' %}
+                    {{TranslateModalWindow.ButtonClose.UA}}
+                {% endif %}
+            </button>
+            <button  class="btn btn-{{color.color_bootstrap}}" name="big_find">
+                {% if lenguage == 'RU' %}
+                    {{TranslateModalWindow.ButtonAdvanceSearch.RU}}
+                {% elif lenguage == 'EN' %}
+                    {{TranslateModalWindow.ButtonAdvanceSearch.EN}}
+                {% elif lenguage == 'UA' %}
+                    {{TranslateModalWindow.ButtonAdvanceSearch.UA}}
+                {% endif %}</button>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Фильтр по городам-->
+  <div class="modal fade" id="filt_city" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">
+              {% if lenguage == 'RU' %}
+                    {{TranslateModalWindow.HeadTextFilterCity.RU}}
+                {% elif lenguage == 'EN' %}
+                    {{TranslateModalWindow.HeadTextFilterCity.EN}}
+                {% elif lenguage == 'UA' %}
+                    {{TranslateModalWindow.HeadTextFilterCity.UA}}
+                {% endif %}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form method="POST" action = "/filter/city">
+          {% csrf_token %}
+        <div class="modal-body anyClass ">
+                <div id = "citychek">
+                  {% if lenguage == 'RU' %}
+                {% for i in filterCity%}
+                  <input type="checkbox" class = "form-check-input ml-2" name = "for_city" value = "{{i.id}}">
+                  <label class = "form-check-label ml-4" for="{{i.id}}">{{i.city_standart_RU}}</label><br/>
+                {%endfor%}
+            {% elif lenguage == 'EN' %}
+                {% for i in filterCity%}
+                  <input type="checkbox" class = "form-check-input ml-2" name = "for_city" value = "{{i.id}}">
+                  <label class = "form-check-label ml-4" for="{{i.id}}">{{i.city_standart_EN}}</label><br/>
+                {%endfor%}
+            {% elif lenguage == 'UA' %}
+                {% for i in filterCity%}
+                  <input type="checkbox" class = "form-check-input ml-2" name = "for_city" value = "{{i.id}}">
+                  <label class = "form-check-label ml-4" for="{{i.id}}">{{i.city_standart_UA}}</label><br/>
+                {%endfor%}
+            {% endif %}
+                </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+              {% if lenguage == 'RU' %}
+                    {{TranslateModalWindow.ButtonClose.RU}}
+                {% elif lenguage == 'EN' %}
+                    {{TranslateModalWindow.ButtonClose.EN}}
+                {% elif lenguage == 'UA' %}
+                    {{TranslateModalWindow.ButtonClose.UA}}
+                {% endif %}</button>
+          <button type="button" class="btn btn-{{color.color_bootstrap}}" onclick="selectAll(this,'citychek')">
+              {% if lenguage == 'RU' %}
+                    {{TranslateModalWindow.ButtonChooseAll.RU}}
+                {% elif lenguage == 'EN' %}
+                    {{TranslateModalWindow.ButtonChooseAll.EN}}
+                {% elif lenguage == 'UA' %}
+                    {{TranslateModalWindow.ButtonChooseAll.UA}}
+                {% endif %}
+          </button>
+          <button class="btn btn-{{color.color_bootstrap}}" name="filt_for_city">
+              {% if lenguage == 'RU' %}
+                    {{TranslateModalWindow.ButtonFilterCity.RU}}
+                {% elif lenguage == 'EN' %}
+                    {{TranslateModalWindow.ButtonFilterCity.EN}}
+                {% elif lenguage == 'UA' %}
+                    {{TranslateModalWindow.ButtonFilterCity.UA}}
+                {% endif %}</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- Фильтр по форматам-->
+  <div class="modal fade" id="format" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">
+              {% if lenguage == 'RU' %}
+                    {{TranslateModalWindow.HeadTextFilterFormat.RU}}
+                {% elif lenguage == 'EN' %}
+                    {{TranslateModalWindow.HeadTextFilterFormat.EN}}
+                {% elif lenguage == 'UA' %}
+                    {{TranslateModalWindow.HeadTextFilterFormat.UA}}
+                {% endif %}
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body anyClass " id = "test">
+            <form method="POST" class = "1" action = "/filter/format">
+                {% csrf_token %}
+                <div id = "formatchek">
+                    {% for i in filterFormat%}
+                      <input type="checkbox" class = "form-check-input ml-2" name = "for_format" value = "{{i.id}}">
+                      <label class = "form-check-label ml-4" for="{{i.id}}">{{i.format}}</label><br/>
+                    {%endfor%}
+                  </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+              {% if lenguage == 'RU' %}
+                    {{TranslateModalWindow.ButtonClose.RU}}
+                {% elif lenguage == 'EN' %}
+                    {{TranslateModalWindow.ButtonClose.EN}}
+                {% elif lenguage == 'UA' %}
+                    {{TranslateModalWindow.ButtonClose.UA}}
+                {% endif %}
+          </button>
+          <button type="button" class="btn btn-{{color.color_bootstrap}}" onclick="selectAll(this,'formatchek')">
+              {% if lenguage == 'RU' %}
+                    {{TranslateModalWindow.ButtonChooseAll.RU}}
+                {% elif lenguage == 'EN' %}
+                    {{TranslateModalWindow.ButtonChooseAll.EN}}
+                {% elif lenguage == 'UA' %}
+                    {{TranslateModalWindow.ButtonChooseAll.UA}}
+                {% endif %}
+          </button>
+          <button class="btn btn-{{color.color_bootstrap}}" name="Filt_format">
+              {% if lenguage == 'RU' %}
+                    {{TranslateModalWindow.ButtonFilterFormat.RU}}
+                {% elif lenguage == 'EN' %}
+                    {{TranslateModalWindow.ButtonFilterFormat.EN}}
+                {% elif lenguage == 'UA' %}
+                    {{TranslateModalWindow.ButtonFilterFormat.UA}}
+                {% endif %}
+          </button>
+        </div>
+          </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Фильтр по Типу-->
+  <div class="modal fade" id="type" tabindex="-1" role="dialаog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">
+              {% if lenguage == 'RU' %}
+                    {{TranslateModalWindow.HeadTextFilterType.RU}}
+                {% elif lenguage == 'EN' %}
+                    {{TranslateModalWindow.HeadTextFilterType.EN}}
+                {% elif lenguage == 'UA' %}
+                    {{TranslateModalWindow.HeadTextFilterType.UA}}
+                {% endif %}
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body anyClass ">
+            <form method="POST" action = "/filter/type">
+                {% csrf_token %}
+                <div id = "typechek">
+                  {% if lenguage == 'RU' %}
+                {% for i in filterType%}
+                  <input type="checkbox" class = "form-check-input ml-2" name = "for_type" value = "{{i.id}}">
+                  <label class = "form-check-label ml-4" for="{{i.id}}">{{i.typeRU}}</label><br/>
+                {%endfor%}
+            {% elif lenguage == 'EN' %}
+                {% for i in filterType%}
+                  <input type="checkbox" class = "form-check-input ml-2" name = "for_type[]" value = "{{i.id}}">
+                  <label class = "form-check-label ml-4" for="{{i.id}}">{{i.typeEN}}</label><br/>
+                {%endfor%}
+            {% elif lenguage == 'UA' %}
+                {% for i in filterType%}
+                  <input type="checkbox" class = "form-check-input ml-2" name = "for_type[]" value = "{{i.id}}">
+                  <label class = "form-check-label ml-4" for="{{i.id}}">{{i.typeUA}}</label><br/>
+                {%endfor%}
+            {% endif %}
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+              {% if lenguage == 'RU' %}
+                    {{TranslateModalWindow.ButtonClose.RU}}
+                {% elif lenguage == 'EN' %}
+                    {{TranslateModalWindow.ButtonClose.EN}}
+                {% elif lenguage == 'UA' %}
+                    {{TranslateModalWindow.ButtonClose.UA}}
+                {% endif %}
+          </button>
+          <button type="button" class="btn btn-{{color.color_bootstrap}}" onclick="selectAll(this,'typechek')">
+              {% if lenguage == 'RU' %}
+                    {{TranslateModalWindow.ButtonChooseAll.RU}}
+                {% elif lenguage == 'EN' %}
+                    {{TranslateModalWindow.ButtonChooseAll.EN}}
+                {% elif lenguage == 'UA' %}
+                    {{TranslateModalWindow.ButtonChooseAll.UA}}
+                {% endif %}
+          </button>
+          <button class="btn btn-{{color.color_bootstrap}}" name="Filt_type">
+              {% if lenguage == 'RU' %}
+                    {{TranslateModalWindow.ButtonFilterType.RU}}
+                {% elif lenguage == 'EN' %}
+                    {{TranslateModalWindow.ButtonFilterType.EN}}
+                {% elif lenguage == 'UA' %}
+                    {{TranslateModalWindow.ButtonFilterType.UA}}
+                {% endif %}
+          </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Выбор рк-->
+  <div class="modal fade" id="chose_rk" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">
+              {% if lenguage == 'RU' %}
+                    {{TranslateModalWindow.HeadTextChooseProductClient.RU}}
+                {% elif lenguage == 'EN' %}
+                    {{TranslateModalWindow.HeadTextChooseProductClient.EN}}
+                {% elif lenguage == 'UA' %}
+                    {{TranslateModalWindow.HeadTextChooseProductClient.UA}}
+                {% endif %}
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form method="POST" action = "/filter/ChooseRK">
+          {% csrf_token %}
+        <div class="modal-body anyClass ">
+                  <input type="radio" class = "form-check-input ml-2" name = "ch_rk" value = "null">
+                  <label class = "form-check-label ml-4" for="null">Ничего</label><br/>
+                  {% for i in MyAC%}
+                    <input type="radio" class = "form-check-input ml-2" name = "ch_rk" value = "{{i.id}}">
+                  <label class = "form-check-label ml-4" for="null">{{i.RK}}</label><br/>
+                  {%endfor%}
+               </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+              {% if lenguage == 'RU' %}
+                    {{TranslateModalWindow.ButtonClose.RU}}
+                {% elif lenguage == 'EN' %}
+                    {{TranslateModalWindow.ButtonClose.EN}}
+                {% elif lenguage == 'UA' %}
+                    {{TranslateModalWindow.ButtonClose.UA}}
+                {% endif %}
+          </button>
+          <button class="btn btn-{{color.color_bootstrap}}" name="to_chose_rk">
+              {% if lenguage == 'RU' %}
+                    {{TranslateModalWindow.ButtonChooseProduct.RU}}
+                {% elif lenguage == 'EN' %}
+                    {{TranslateModalWindow.ButtonChooseProduct.EN}}
+                {% elif lenguage == 'UA' %}
+                    {{TranslateModalWindow.ButtonChooseProduct.UA}}
+                {% endif %}</button>
+        </div>
+          </form>
+      </div>
+    </div>
+  </div>
+  <!--Конец модальных окон -->
+	<div id="preloader_malc">
+	<div>
+		Подождите, идет загрузка сайта ...
+	</div>
+</div>
+	{% block modalwindow %}{% endblock %}
+ <div class = "container-fluid  ">
+    <div class="row ">
+      <div class=" col-md-2 border border-dark  ">
+          <div >
+            <h3 class = "text-center">
+                {% if lenguage == 'RU' %}
+                        {{TranslateBody.HeadFilter.RU}}
+                    {% elif lenguage == 'EN' %}
+                        {{TranslateBody.HeadFilter.EN}}
+                    {% elif lenguage == 'UA' %}
+                        {{TranslateBody.HeadFilter.UA}}
+                    {% endif %}
+                </h3>
+            {% if lenguage == 'RU' %}
+                {{TranslateBody.ParamFilterCity.RU}}
+            {% elif lenguage == 'EN' %}
+                {{TranslateBody.ParamFilterCity.EN}}
+            {% elif lenguage == 'UA' %}
+                {{TranslateBody.ParamFilterCity.UA}}
+            {% endif %}
+              :
+              {% if lenguage == 'RU' %}
+                    {% for i in ParamFilter.City %}
+                        {{i.city_standart_RU}}
+                    {% endfor %}
+                {% elif lenguage == 'EN' %}
+                    {% for i in ParamFilter.City %}
+                        {{i.city_standart_EN}}
+                    {% endfor %}
+                {% elif lenguage == 'UA' %}
+                    {% for i in ParamFilter.City %}
+                        {{i.city_standart_UA}}
+                    {% endfor %}
+                {% endif %}
+              <br/>
+            {% if lenguage == 'RU' %}
+                {{TranslateBody.ParamFilterFormat.RU}}
+            {% elif lenguage == 'EN' %}
+                {{TranslateBody.ParamFilterFormat.EN}}
+            {% elif lenguage == 'UA' %}
+                {{TranslateBody.ParamFilterFormat.UA}}
+            {% endif %}
+            : {% for i in ParamFilter.Format %}
+                            {{i.format}}
+                        {% endfor %}<br/>
+            {% if lenguage == 'RU' %}
+                {{TranslateBody.ParamFilterType.RU}}
+            {% elif lenguage == 'EN' %}
+                {{TranslateBody.ParamFilterType.EN}}
+            {% elif lenguage == 'UA' %}
+                {{TranslateBody.ParamFilterType.UA}}
+            {% endif %}
+            : {% if lenguage == 'RU' %}
+                        {% for i in ParamFilter.Type %}
+                            {{i.typeRU}}
+                        {% endfor %}
+                    {% elif lenguage == 'EN' %}
+                        {% for i in ParamFilter.Type %}
+                            {{i.typeEN}}
+                        {% endfor %}
+                    {% elif lenguage == 'UA' %}
+                        {% for i in ParamFilter.Type %}
+                            {{i.typeUA}}
+                        {% endfor %}
+                    {% endif %}<br/>
+            {% if lenguage == 'RU' %}
+                {{TranslateBody.ParamFilterStory.RU}}
+            {% elif lenguage == 'EN' %}
+                {{TranslateBody.ParamFilterStory.EN}}
+            {% elif lenguage == 'UA' %}
+                {{TranslateBody.ParamFilterStory.UA}}
+            {% endif %}
+            : {% for i in ParamFilter.Story %}
+                            {{i.story}}
+                        {% endfor %}<br/>
+            {% if lenguage == 'RU' %}
+                {{TranslateBody.ParamFilterProduct.RU}}
+            {% elif lenguage == 'EN' %}
+                {{TranslateBody.ParamFilterProduct.EN}}
+            {% elif lenguage == 'UA' %}
+                {{TranslateBody.ParamFilterProduct.UA}}
+            {% endif %}
+            : {{ParamFilter.Product.RK}}<br/>
+            <hr>
+              {% if lenguage == 'RU' %}
+                {{TranslateBody.ParamCountAll.RU}}
+            {% elif lenguage == 'EN' %}
+                {{TranslateBody.ParamCountAll.EN}}
+            {% elif lenguage == 'UA' %}
+                {{TranslateBody.ParamCountAll.UA}}
+            {% endif %}
+            : <span id = "AllBords">{{CountAboutAC.AllAC}}</span><br/>
+            {% if lenguage == 'RU' %}
+                {{TranslateBody.ParamCountLike.RU}}
+            {% elif lenguage == 'EN' %}
+                {{TranslateBody.ParamCountLike.EN}}
+            {% elif lenguage == 'UA' %}
+                {{TranslateBody.ParamCountLike.UA}}
+            {% endif %}
+
+              : <span id="CountLike">{{CountAboutAC.like}}</span><br/>
+            {% if lenguage == 'RU' %}
+                {{TranslateBody.ParamCountDislike.RU}}
+            {% elif lenguage == 'EN' %}
+                {{TranslateBody.ParamCountDislike.EN}}
+            {% elif lenguage == 'UA' %}
+                {{TranslateBody.ParamCountDislike.UA}}
+            {% endif %}
+
+              : <span id="CountDisLike">{{CountAboutAC.Dislike}}</span><br/>
+            <form action = "/filter/ResetFilter" method = "POST">
+                {% csrf_token %}
+                 <button  class="btn btn-{{color.color_bootstrap}} mr-auto center-block btn-block" name="begin_RK" id = "all_1">
+                     {% if lenguage == 'RU' %}
+                        {{TranslateBody.ButtonResetFilter.RU}}
+                    {% elif lenguage == 'EN' %}
+                        {{TranslateBody.ButtonResetFilter.EN}}
+                    {% elif lenguage == 'UA' %}
+                        {{TranslateBody.ButtonResetFilter.UA}}
+                    {% endif %}
+                    </button>
+              </form>
+                        </div>
+                        <hr>
+                    <p ><h4 class = "text-center">{% if lenguage == 'RU' %}
+                                                    {{TranslateBody.Stories.RU}}
+                                                {% elif lenguage == 'EN' %}
+                                                    {{TranslateBody.Stories.EN}}
+                                                {% elif lenguage == 'UA' %}
+                                                    {{TranslateBody.Stories.UA}}
+                                                {% endif %}</h4></p>
+                <form  method="POST" action = "/filter/StoryFilter">
+                    {% csrf_token %}
+                <div class ="border border-dark">
+                    {% for i in filterStory%}
+                        <input type="checkbox" class = "form-check-input ml-2" name = "point" value = "{{i.id}}">
+                        <label class = "form-check-label ml-4" style = "color:{{i.color}} " for="i.id">{{i.story}}</label><br/>
+                    {%endfor%}
+                    <br/>
+                </div>
+            <div class = text-center>
+                <button  class="btn btn-{{color.color_bootstrap}} mr-auto mt-2  center-block btn-block" name="Filt_mark">
+                    {% if lenguage == 'RU' %}
+                        {{TranslateBody.ButtonOutStory.RU}}
+                    {% elif lenguage == 'EN' %}
+                        {{TranslateBody.ButtonOutStory.EN}}
+                    {% elif lenguage == 'UA' %}
+                        {{TranslateBody.ButtonOutStory.UA}}
+                    {% endif %}
+                </button>
+                </form>
+                    <button class="btn btn-{{color.color_bootstrap}} mr-auto  center-block btn-block" type="button" data-toggle="modal" data-target="#Reach">
+                        {% if lenguage == 'RU' %}
+                        {{TranslateBody.ButtonRF.RU}}
+                    {% elif lenguage == 'EN' %}
+                        {{TranslateBody.ButtonRF.EN}}
+                    {% elif lenguage == 'UA' %}
+                        {{TranslateBody.ButtonRF.UA}}
+                    {% endif %}
+                    </button>
+                  <button type="button" class="btn btn-{{color.color_bootstrap}} mr-auto  btn-block" data-toggle="modal" data-target="#chose_rk">
+                            {% if lenguage == 'RU' %}
+                                {{TranslateBody.ButtonChooseProductClient.RU}}
+                            {% elif lenguage == 'EN' %}
+                                {{TranslateBody.ButtonChooseProductClient.EN}}
+                            {% elif lenguage == 'UA' %}
+                                {{TranslateBody.ButtonChooseProductClient.UA}}
+                            {% endif %}
+                        </button>
+                <button type="button" class="btn btn-{{color.color_bootstrap}} mr-auto  center-block btn-block" data-toggle="modal" data-target="#search">
+                    {% if lenguage == 'RU' %}
+                        {{TranslateBody.ButtonOpenResearch.RU}}
+                    {% elif lenguage == 'EN' %}
+                        {{TranslateBody.ButtonOpenResearch.EN}}
+                    {% elif lenguage == 'UA' %}
+                        {{TranslateBody.ButtonOpenResearch.UA}}
+                    {% endif %}
+                </button>
+                <button type="button" class="btn btn-{{color.color_bootstrap}} mr-auto  btn-block" data-toggle="modal" data-target="#filt_city">
+                    {% if lenguage == 'RU' %}
+                        {{TranslateBody.ButtonFilterCity.RU}}
+                    {% elif lenguage == 'EN' %}
+                        {{TranslateBody.ButtonFilterCity.EN}}
+                    {% elif lenguage == 'UA' %}
+                        {{TranslateBody.ButtonFilterCity.UA}}
+                    {% endif %}
+                </button>
+                <button type="button" class="btn btn-{{color.color_bootstrap}} mr-auto  btn-block" data-toggle="modal" data-target="#format">
+                   {% if lenguage == 'RU' %}
+                        {{TranslateBody.ButtonFilterFormat.RU}}
+                    {% elif lenguage == 'EN' %}
+                        {{TranslateBody.ButtonFilterFormat.EN}}
+                    {% elif lenguage == 'UA' %}
+                        {{TranslateBody.ButtonFilterFormat.UA}}
+                    {% endif %}
+                </button>
+                <button type="button" class="btn btn-{{color.color_bootstrap}} mr-auto  btn-block" data-toggle="modal" data-target="#type">
+                    {% if lenguage == 'RU' %}
+                        {{TranslateBody.ButtonFilterType.RU}}
+                    {% elif lenguage == 'EN' %}
+                        {{TranslateBody.ButtonFilterType.EN}}
+                    {% elif lenguage == 'UA' %}
+                        {{TranslateBody.ButtonFilterType.UA}}
+                    {% endif %}
+                </button>
+
+                <button type="button" class="btn btn-{{color.color_bootstrap}} mr-auto  btn-block" id = "like">
+                    {% if lenguage == 'RU' %}
+                        {{TranslateBody.ButtonLike.RU}}
+                    {% elif lenguage == 'EN' %}
+                        {{TranslateBody.ButtonLike.EN}}
+                    {% elif lenguage == 'UA' %}
+                        {{TranslateBody.ButtonLike.UA}}
+                    {% endif %}
+                </button>
+                <button type="button" class="btn btn-{{color.color_bootstrap}} mr-auto  btn-block" id = "dislikes">
+                    {% if lenguage == 'RU' %}
+                        {{TranslateBody.ButtonDislike.RU}}
+                    {% elif lenguage == 'EN' %}
+                        {{TranslateBody.ButtonDislike.EN}}
+                    {% elif lenguage == 'UA' %}
+                        {{TranslateBody.ButtonDislike.UA}}
+                    {% endif %}
+                </button>
+                <button type="button" class="btn btn-{{color.color_bootstrap}} mr-auto  btn-block" id = "back_to">
+                    {% if lenguage == 'RU' %}
+                        {{TranslateBody.ButtonAll.RU}}
+                    {% elif lenguage == 'EN' %}
+                        {{TranslateBody.ButtonAll.EN}}
+                    {% elif lenguage == 'UA' %}
+                        {{TranslateBody.ButtonAll.UA}}
+                    {% endif %}
+                </button><br/>
+            </div>
+      </div>
+      <div id = "map" class="col-md-10"></div>
+    </div>
+    <form action ="export/Excel/{{color.color_table}}" method ="POST">
+        {% csrf_token %}
+    <button class = "btn btn-{{color.color_bootstrap}} btn-lg mr-auto mt-2 ml-1" name="in_ecxel">
+        {% if lenguage == 'RU' %}
+            {{TranslateBody.ButtonExportExcel.RU}}
+        {% elif lenguage == 'EN' %}
+            {{TranslateBody.ButtonExportExcel.EN}}
+        {% elif lenguage == 'UA' %}
+            {{TranslateBody.ButtonExportExcel.UA}}
+        {% endif %}
+    </button><br/>
+					</form>
+    <div class = "container-fluid">
+    	<div class="form-row">
+            {% if lenguage == 'RU' %}
+                <div class="col-md-auto">
+                <input type="button" class = "btn btn-{{color.color_bootstrap}} btn-lg " value="{{TranslateBody.ButtonShowAll.RU}}" id = "show_but">
+    			<input type="button" class = "btn btn-{{color.color_bootstrap}} btn-lg " value="{{TranslateBody.ButtonHidden.RU}}" id = "hide_but">
+    			<input type="button" class = "btn btn-{{color.color_bootstrap}} btn-lg " value="{{TranslateBody.ButtonResetCenter.RU}}" id = "Back_center">
+    		</div>
+    		<div class = "col-3 mr -3 text-left">
+    		    <input class="form-control mb-2" type="text" placeholder="{{TranslateBody.PlacholderSearch.RU}}" id="search-text" onkeyup="tableSearch()">
+    		</div>
+            {% elif lenguage == 'EN' %}
+                <div class="col-md-auto">
+                <input type="button" class = "btn btn-{{color.color_bootstrap}} btn-lg " value="{{TranslateBody.ButtonShowAll.EN}}" id = "show_but">
+    			<input type="button" class = "btn btn-{{color.color_bootstrap}} btn-lg " value="{{TranslateBody.ButtonHidden.EN}}" id = "hide_but">
+    			<input type="button" class = "btn btn-{{color.color_bootstrap}} btn-lg " value="{{TranslateBody.ButtonResetCenter.EN}}" id = "Back_center">
+    		</div>
+    		<div class = "col-3 mr -3 text-left">
+    		    <input class="form-control mb-2" type="text" placeholder="{{TranslateBody.PlacholderSearch.EN}}" id="search-text" onkeyup="tableSearch()">
+    		</div>
+            {% elif lenguage == 'UA' %}
+                <div class="col-md-auto">
+                <input type="button" class = "btn btn-{{color.color_bootstrap}} btn-lg " value="{{TranslateBody.ButtonShowAll.UA}}" id = "show_but">
+    			<input type="button" class = "btn btn-{{color.color_bootstrap}} btn-lg " value="{{TranslateBody.ButtonHidden.UA}}" id = "hide_but">
+    			<input type="button" class = "btn btn-{{color.color_bootstrap}} btn-lg " value="{{TranslateBody.ButtonResetCenter.UA}}" id = "Back_center">
+    		</div>
+    		<div class = "col-3 mr -3 text-left">
+    		    <input class="form-control mb-2" type="text" placeholder="{{TranslateBody.PlacholderSearch.UA}}" id="search-text" onkeyup="tableSearch()">
+    		</div>
+            {% endif %}
+
+    		<div class = "col-3 mr -3 text-left">
+    		    <select id = "DropforSearch">
+                    {% if lenguage == 'RU' %}
+                        <option selected>{{TranslateBody.SelectChoose.RU}}</option>
+                          <option value="1">{{tableNameHead.city.RU}}</option>
+                          <option value="3">doors</option>
+                          <option value="4">{{tableNameHead.SelfNumberCont.RU}}</option>
+                          <option value="5">{{tableNameHead.Razom_number.RU}}</option>
+                          <option value="2">{{tableNameHead.adress.RU}}</option>
+                          <option value="11">{{tableNameHead.story.RU}}</option>
+                    {% elif lenguage == 'EN' %}
+                        <option selected>{{TranslateBody.SelectChoose.EN}}</option>
+                          <option value="1">{{tableNameHead.city.EN}}</option>
+                          <option value="3">doors</option>
+                          <option value="4">{{tableNameHead.SelfNumberCont.EN}}</option>
+                          <option value="5">{{tableNameHead.Razom_number.EN}}</option>
+                          <option value="2">{{tableNameHead.adress.EN}}</option>
+                          <option value="11">{{tableNameHead.story.EN}}</option>
+                    {% elif lenguage == 'UA' %}
+                        <option selected>{{TranslateBody.SelectChoose.UA}}</option>
+                          <option value="1">{{tableNameHead.city.UA}}</option>
+                          <option value="3">doors</option>
+                          <option value="4">{{tableNameHead.SelfNumberCont.UA}}</option>
+                          <option value="5">{{tableNameHead.Razom_number.UA}}</option>
+                          <option value="2">{{tableNameHead.adress.UA}}</option>
+                          <option value="11">{{tableNameHead.story.UA}}</option>
+                    {% endif %}
+
+                </select>
+    		</div>
+    	</div>
+    </div>
+</div>
+{% block table %}{% endblock %}
+
+                <script src="{% static 'OhhRazom/style/exit_data/modelsMap/HeadClientMap.js' %}?v1"></script>
+				<script src="{% static 'OhhRazom/style/exit_data/modelsMap/BodyMakeClient.js' %}?v1"></script>
+				<script src="{% static 'OhhRazom/style/exit_data/modelsMap/FunctionLikeDis.js' %}?v1"></script>
+				<script src="{% static 'OhhRazom/style/exit_data/modelsMap/AjaxForms.js' %}?v1"></script>
+                <script src="{% static 'OhhRazom/style/exit_data/js/remove.js' %}?v1"></script>
+				<script src="{% static 'OhhRazom/style/exit_data/js/map.js' %}?v1"></script>
+	</body>
+</html>

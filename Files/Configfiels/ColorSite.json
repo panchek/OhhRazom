@@ -1,0 +1,19 @@
+{
+    "admin" : {
+        "color_table": "007bff",
+        "color_bootstrap": "primary"
+    },
+    "Universal McCann" : {
+        "color_table": "dc3545",
+        "color_bootstrap": "danger",
+        "NameIcon": "22"
+    },
+    "Initiative" : {
+        "color_table": "007bff",
+        "color_bootstrap": "primary"
+    },
+    "Havas" : {
+        "color_table": "007bff",
+        "color_bootstrap": "primary"
+    }
+}

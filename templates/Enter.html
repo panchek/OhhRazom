@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<title>Авторизация</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="{% static 'OhhRazom/image/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'OhhRazom/style/FirstEnter/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'OhhRazom/style/FirstEnter/main.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<!--===============================================================================================-->
+	<style>
+		.FooterHtml{
+		    text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="limiter">
+		<div style = "color : red; text-align: center;"> {{ error }} </div><hr>
+		<form action="ChangeLenguage"  class="navbar-toggler collapsed" method="POST" >
+                    {% if lenguage == 'RU' %}
+                        {{ LengObj.ChangeLenguage.RU }}
+                    {% elif lenguage == 'EN' %}
+                        {{ LengObj.ChangeLenguage.EN }}
+                    {% elif lenguage == 'UA' %}
+                        {{ LengObj.ChangeLenguage.UA }}
+                    {% endif %}
+                <select name="Len" class="select_send_ajax selectpicker">
+                    {% if lenguage == 'RU' %}
+                        <option>RU</option>
+                        <option>EN</option>
+                        <option>UA</option>
+                    {% elif lenguage == 'EN' %}
+                        <option>EN</option>
+                        <option>RU</option>
+                        <option>UA</option>
+                    {% elif lenguage == 'UA' %}
+                        <option>UA</option>
+                        <option>EN</option>
+                        <option>RU</option>
+                    {% endif %}
+                </select>
+                  {% csrf_token %}
+             </form>
+                    <script>
+          $('.select_send_ajax').on('change', function() {
+              $(this.form).submit();
+            });
+
+            $('form').submit(function(event) { //Отправка всех форм
+            });
+      </script>
+		<div class="container-login100">
+			<div class="wrap-login100 p-t-50 p-b-90">
+				<form action = "" method = "POST" class="login100-form validate-form flex-sb flex-w">
+					{% csrf_token %}
+					<span class="login100-form-title p-b-51">
+					{% if lenguage == 'RU' %}
+                        {{ LengObj.Authorize.RU }}
+                    {% elif lenguage == 'EN' %}
+                        {{ LengObj.Authorize.EN }}
+                    {% elif lenguage == 'UA' %}
+                        {{ LengObj.Authorize.UA }}
+                    {% endif %}
+					</span>
+					<div class="wrap-input100 validate-input m-b-16">
+						{% if lenguage == 'RU' %}
+						<input class="input100" type="text" name="username" placeholder="{{ LengObj.PlaceHolderLogin.RU }}">
+                    {% elif lenguage == 'EN' %}
+                        <input class="input100" type="text" name="username" placeholder="{{ LengObj.PlaceHolderLogin.EN }}">
+                    {% elif lenguage == 'UA' %}
+                        <input class="input100" type="text" name="username" placeholder="{{ LengObj.PlaceHolderLogin.UA }}">
+                    {% endif %}
+
+						<span class="focus-input100"></span>
+					</div>
+					<div class="wrap-input100 validate-input m-b-16">
+					{% if lenguage == 'RU' %}
+						<input class="input100" type="password" name="password" placeholder="{{ LengObj.PlaceHolderPassword.RU }}">
+                    {% elif lenguage == 'EN' %}
+                        <input class="input100" type="password" name="password" placeholder="{{ LengObj.PlaceHolderPassword.EN }}">
+                    {% elif lenguage == 'UA' %}
+                        <input class="input100" type="password" name="password" placeholder="{{ LengObj.PlaceHolderPassword.UA }}">
+                    {% endif %}
+
+						<span class="focus-input100"></span>
+					</div>
+					<div class="container-login100-form-btn m-t-17">
+						<button  name="author" class="login100-form-btn">
+					{% if lenguage == 'RU' %}
+                        {{ LengObj.ButtonEnter.RU }}
+                    {% elif lenguage == 'EN' %}
+                        {{ LengObj.ButtonEnter.EN }}
+                    {% elif lenguage == 'UA' %}
+                        {{ LengObj.ButtonEnter.UA }}
+                    {% endif %}
+						</button>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+<footer class="FooterHtml">
+					Developer : Melnyk Dmytro mail: dmytro.melnyk.it@gmail.com
+				</footer>
+</body>
+</html>

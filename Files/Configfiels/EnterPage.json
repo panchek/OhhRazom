@@ -1,0 +1,57 @@
+{
+  "Authorize":{
+    "RU": "Авторизация",
+    "EN": "Authorization",
+    "UA": "Авторизація"
+  },
+  "PlaceHolderLogin":{
+    "RU": "Логин",
+    "EN": "Login",
+    "UA": "Логін"
+  },
+  "PlaceHolderPassword":{
+    "RU": "Пароль",
+    "EN": "Password",
+    "UA": "Пароль"
+  },
+  "ErrorMassage":{
+    "RU": "Авторизация",
+    "EN": "Authorization",
+    "UA": "Авторизація"
+  },
+  "ButtonEnter":{
+    "RU": "Войти",
+    "EN": "Enter",
+    "UA": "Увійти"
+  },
+  "ChangeLenguage": {
+    "RU" : "Смена языка",
+    "EN" : "Switch language",
+    "UA" : "Зміна мови"
+  },
+  "Registration": {
+    "RU" : "РЕГИСТРАЦИЯ",
+    "EN" : "REGISTRATION",
+    "UA" : "РЕЄСТРАЦІЯ"
+  },
+  "SelectBrend": {
+    "RU" : "Выбор Бренда",
+    "EN" : "Brand Choice",
+    "UA" : "Вибір Бренду"
+  },
+  "SelectChoose": {
+    "RU" : "Выберите",
+    "EN" : "Select",
+    "UA" : "Оберіть"
+  },
+  "ButtonRegistration": {
+    "RU" : "Зарегестрировать",
+    "EN" : "Register",
+    "UA" : "Зареєструвати"
+  },
+  "ButtonExit": {
+    "RU" : "Выйти",
+    "EN" : "Exit",
+    "UA" : "Вийти"
+  }
+}
