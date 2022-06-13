@@ -75,7 +75,7 @@ class ToolsManager(View):
                 for i in df:
                     Totalplanes.objects.filter(Razom_number=i[0]).update(route=i[1])
 
-                return redirect(f"media/OhhRazom/Excel/ManagerToolsRoutes/change_route_{datetime.datetime.now().strftime('%d_%m_%Y')}.xlsx")
+                return redirect(f"/media/OhhRazom/Excel/ManagerToolsRoutes/change_route_{datetime.datetime.now().strftime('%d_%m_%Y')}.xlsx")
 
         return HttpResponseRedirect(reverse_lazy('Autentificate'))
 
