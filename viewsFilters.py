@@ -86,6 +86,10 @@ class Filter(View):
                 del request.session['currentDataOut']
             except:
                 pass
+            # try:
+            #     del request.session['currentOutAC']
+            # except:
+            #     pass
             return HttpResponseRedirect(reverse_lazy('Autentificate'))
         elif type == "AdvandcedSearch":
             try:

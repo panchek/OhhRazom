@@ -74,7 +74,7 @@ class ThisRK(View):
                 return HttpResponseRedirect(reverse_lazy('setting'))
         elif utils == "Choose":
             try:
-                print("hello")
+                # print("hello")
                 request.session['SettingRKName'] = int(RK)
                 return HttpResponseRedirect(reverse_lazy('CurrentRK'))
             except Exception as e:
