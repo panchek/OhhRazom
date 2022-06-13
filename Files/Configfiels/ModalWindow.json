@@ -93,5 +93,10 @@
     "RU": "Частота",
     "EN": "Frequency",
     "UA": "Частота"
+  },
+    "Form_check_label" : {
+    "RU": "Ничего",
+    "EN": "Nothing",
+    "UA": "Нічого"
   }
 }

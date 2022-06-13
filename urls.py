@@ -16,6 +16,7 @@ from .ClientDo import *
 from .viewOutDoors import *
 from .WorkBodyOutDoors import *
 from .viewsData import *
+from .ToolsManager import *
 
 urlpatterns = [
     path('', EnterView.as_view(), name='Enter'),
@@ -54,6 +55,7 @@ urlpatterns = [
     path('InputToDb/adress/', ImportDBadress.as_view()),
     path('InputToDb/loc/', ImportDBloc.as_view()),
     path('Change/Img/in/', FixProblem.as_view()),
+    path('toolsmanager/', ToolsManager.as_view()),
 ]
 
 """

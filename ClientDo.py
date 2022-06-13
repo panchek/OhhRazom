@@ -79,9 +79,9 @@ class ExportExcelClient(View):
                     "UA": "GRP"
                 },
                 "I": {
-                    "RU": "Doors",
-                    "EN": "Doors",
-                    "UA": "Doors"
+                    "RU": "DOORS",
+                    "EN": "DOORS",
+                    "UA": "DOORS"
                 },
                 "J": dictHead['SelfNumberCont'],
                 "K": dictHead['Razom_number'],

@@ -137,5 +137,10 @@
     "RU": "Экспорт в Excel",
     "EN": "Export to Excel",
     "UA": "Експортувати в Excel"
+  },
+    "ButtonRF" : {
+    "RU": "Охват и частота",
+    "EN": "Reach and Frequency",
+    "UA": "Охоплення та частота"
   }
 }

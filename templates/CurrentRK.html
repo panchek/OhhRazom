@@ -297,20 +297,20 @@
                             </th>
                             <th>
                                 {% if lenguage == 'RU' %}
-                                    {{BasicName.Period.RU}}
-                                {% elif lenguage == 'EN' %}
-                                    {{BasicName.Period.EN}}
-                                {% elif lenguage == 'UA' %}
-                                    {{BasicName.Period.UA}}
-                                {% endif %}
-                            </th>
-                            <th>
-                                {% if lenguage == 'RU' %}
                                     {{BasicName.Fruqency.RU}}
                                 {% elif lenguage == 'EN' %}
                                     {{BasicName.Fruqency.EN}}
                                 {% elif lenguage == 'UA' %}
                                     {{BasicName.Fruqency.UA}}
+                                {% endif %}
+                            </th>
+                            <th>
+                                {% if lenguage == 'RU' %}
+                                    {{BasicName.Period.RU}}
+                                {% elif lenguage == 'EN' %}
+                                    {{BasicName.Period.EN}}
+                                {% elif lenguage == 'UA' %}
+                                    {{BasicName.Period.UA}}
                                 {% endif %}
                             </th>
                         </tr>
@@ -476,7 +476,13 @@
             {% endif %}
         </button>
       <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#Reach">
-          Reach and Frequency
+                    {% if lenguage == 'RU' %}
+                        {{BasicName.ButtonRF.RU}}
+                    {% elif lenguage == 'EN' %}
+                        {{BasicName.ButtonRF.EN}}
+                    {% elif lenguage == 'UA' %}
+                        {{BasicName.ButtonRF.UA}}
+                    {% endif %}
         </button>
       <div class="pt-2">
           {% if lenguage == 'RU' %}
@@ -537,7 +543,7 @@
                     <th>{{tableNameHead.city.RU}}</th>
                     <th>{{tableNameHead.contactor.RU}}</th>
                     <th>{{tableNameHead.adress.RU}}</th>
-                    <th>doors</th>
+                    <th>DOORS</th>
                     <th>{{tableNameHead.SelfNumberCont.RU}}</th>
                     <th>{{tableNameHead.Razom_number.RU}}</th>
                     <th>{{tableNameHead.type.RU}}</th>
@@ -551,7 +557,7 @@
                     <th>{{tableNameHead.city.EN}}</th>
                     <th>{{tableNameHead.contactor.EN}}</th>
                     <th>{{tableNameHead.adress.EN}}</th>
-                    <th>doors</th>
+                    <th>DOORS</th>
                     <th>{{tableNameHead.SelfNumberCont.EN}}</th>
                     <th>{{tableNameHead.Razom_number.EN}}</th>
                     <th>{{tableNameHead.type.EN}}</th>
@@ -565,7 +571,7 @@
                     <th>{{tableNameHead.city.UA}}</th>
                     <th>{{tableNameHead.contactor.UA}}</th>
                     <th>{{tableNameHead.adress.UA}}</th>
-                    <th>doors</th>
+                    <th>DOORS</th>
                     <th>{{tableNameHead.SelfNumberCont.UA}}</th>
                     <th>{{tableNameHead.Razom_number.UA}}</th>
                     <th>{{tableNameHead.type.UA}}</th>
