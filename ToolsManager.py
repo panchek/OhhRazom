@@ -68,7 +68,7 @@ class ToolsManager(View):
 
                     wbAdmin[f'C{last_start + count}'] = i[1]['route']
 
-                strPath = "/home/acrzmcomua/public_html"
+                strPath = "/home/acrzmcomua/public_html/"
                 filename = strPath + f"media/OhhRazom/Excel/ManagerToolsRoutes/change_route_{datetime.datetime.now().strftime('%d_%m_%Y')}.xlsx"
                 wb.save(filename=filename)
 
