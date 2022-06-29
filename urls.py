@@ -56,7 +56,6 @@ urlpatterns = [
     path('InputToDb/loc/', ImportDBloc.as_view()),
     path('Change/Img/in/', FixProblem.as_view()),
     path('toolsmanager/', ToolsManager.as_view()),
-    path('toolsmanagerbot/', ToolsManagerBot.as_view()),
 ]
 
 """

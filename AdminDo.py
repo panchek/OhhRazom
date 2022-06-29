@@ -90,8 +90,8 @@ class ExportExcelAdmin(View):
             wb = Workbook()
             NameRK = Rk.objects.get(id=request.session['currentOutAC'])
             #strPath = ""
-            # strPath = "/home/acrzmcomua/public_html/"
-            strPath = "D:\work\Razom\ooh\\"
+            strPath = "/home/acrzmcomua/public_html/"
+            #strPath = "D:\work\Razom\ooh\\" #для меня
             filename = strPath + f"media/OhhRazom/Excel/{request.user}{NameRK.RK}.xlsx"
             wbAdmin = wb.active
             wbAdmin.title = "AC"
@@ -254,13 +254,13 @@ class ExportExcelAdmin(View):
                 wbAdmin[f"N{stratCursor}"].fill = PatternFill("solid", str(tmpInst.story.color).replace("#", ""))
                 stratCursor += 1
             # strPath = "D:\перевод сайт в\ooh" #windows
-            # strPath = "/home/acrzmcomua/public_html"  # linux
-            strPath = 'D:\work\Razom\ooh'
+            strPath = "/home/acrzmcomua/public_html"  # linux
+            # strPath = 'D:\work\Razom\ooh' для меня
             if os.path.exists(os.path.join(strPath, "media", "OhhRazom", "Excel", f'{request.user}{NameRK.RK}.xlsx')):
                 os.remove(os.path.join(strPath, "media", "OhhRazom", "Excel", f'{request.user}{NameRK.RK}.xlsx'))
             wb.save(filename=filename)
+            # return redirect(f'/media/OhhRazom/Excel/{request.user}{NameRK.RK}.xlsx') # для меня
             return redirect(f'/media/OhhRazom/Excel/{request.user}{NameRK.RK}.xlsx')
-            # return redirect(f'/media/OhhRazom/Excel/{request.user}{NameRK.RK}.xlsx')
         except Exception as e:
             print(traceback.format_exc())
             return HttpResponse(traceback.format_exc())
