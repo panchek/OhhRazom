@@ -91,6 +91,7 @@ class ExportExcelAdmin(View):
             NameRK = Rk.objects.get(id=request.session['currentOutAC'])
             #strPath = ""
             strPath = "/home/acrzmcomua/public_html/"
+            #strPath = "D:\work\Razom\ooh\\" #для меня
             filename = strPath + f"media/OhhRazom/Excel/{request.user}{NameRK.RK}.xlsx"
             wbAdmin = wb.active
             wbAdmin.title = "AC"
@@ -160,7 +161,7 @@ class ExportExcelAdmin(View):
                         wbAdmin[f'{k}{stratCursor}'].fill = PatternFill("solid", "FFA07A")
                 if request.COOKIES['lenguage'] == "RU":
                     wbAdmin[f"B{stratCursor}"] = tmpInst.Razom_number.city_standart.city_standart_RU
-                    wbAdmin[f"C{stratCursor}"] = tmpInst.Razom_number.adress.adress_RU
+                    wbAdmin[f"C{stratCursor}"] = f'{tmpInst.Razom_number.adress.adress_RU}{tmpInst.Razom_number.house}{tmpInst.Razom_number.loc.Location_RU}'
                     wbAdmin[f"D{stratCursor}"] = tmpInst.Razom_number.type.typeRU
                     wbAdmin[f"E{stratCursor}"] = tmpInst.Razom_number.format.format
                     wbAdmin[f"F{stratCursor}"] = tmpInst.Razom_number.side.side
@@ -183,7 +184,7 @@ class ExportExcelAdmin(View):
                     wbAdmin[f"O{stratCursor}"] = tmpInst.Razom_number.Contractor.Contractor_RU
                 elif request.COOKIES['lenguage'] == "EN":
                     wbAdmin[f"B{stratCursor}"] = tmpInst.Razom_number.city_standart.city_standart_EN
-                    wbAdmin[f"C{stratCursor}"] = tmpInst.Razom_number.adress.adress_EN
+                    wbAdmin[f"C{stratCursor}"] = f'{tmpInst.Razom_number.adress.adress_EN}{tmpInst.Razom_number.house}{tmpInst.Razom_number.loc.Location_EN}'
                     wbAdmin[f"D{stratCursor}"] = tmpInst.Razom_number.type.typeEN
                     wbAdmin[f"E{stratCursor}"] = tmpInst.Razom_number.format.format
                     wbAdmin[f"F{stratCursor}"] = tmpInst.Razom_number.side.side
@@ -206,7 +207,7 @@ class ExportExcelAdmin(View):
                     wbAdmin[f"O{stratCursor}"] = tmpInst.Razom_number.Contractor.Contractor_EN
                 elif request.COOKIES['lenguage'] == "UA":
                     wbAdmin[f"B{stratCursor}"] = tmpInst.Razom_number.city_standart.city_standart_UA
-                    wbAdmin[f"C{stratCursor}"] = tmpInst.Razom_number.adress.adress_UA
+                    wbAdmin[f"C{stratCursor}"] = f'{tmpInst.Razom_number.adress.adress_UA}{tmpInst.Razom_number.house}{tmpInst.Razom_number.loc.Location_UA}'
                     wbAdmin[f"D{stratCursor}"] = tmpInst.Razom_number.type.typeUA
                     wbAdmin[f"E{stratCursor}"] = tmpInst.Razom_number.format.format
                     wbAdmin[f"F{stratCursor}"] = tmpInst.Razom_number.side.side
@@ -254,9 +255,11 @@ class ExportExcelAdmin(View):
                 stratCursor += 1
             # strPath = "D:\перевод сайт в\ooh" #windows
             strPath = "/home/acrzmcomua/public_html"  # linux
+            # strPath = 'D:\work\Razom\ooh' для меня
             if os.path.exists(os.path.join(strPath, "media", "OhhRazom", "Excel", f'{request.user}{NameRK.RK}.xlsx')):
                 os.remove(os.path.join(strPath, "media", "OhhRazom", "Excel", f'{request.user}{NameRK.RK}.xlsx'))
             wb.save(filename=filename)
+            # return redirect(f'/media/OhhRazom/Excel/{request.user}{NameRK.RK}.xlsx') # для меня
             return redirect(f'/media/OhhRazom/Excel/{request.user}{NameRK.RK}.xlsx')
         except Exception as e:
             print(traceback.format_exc())

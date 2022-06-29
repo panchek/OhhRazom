@@ -533,8 +533,8 @@ overflow-y: scroll;
                     {% csrf_token %}
                 <div class ="border border-dark">
                     {% for i in filterStory%}
-                        <input type="checkbox" class = "form-check-input ml-2" name = "point" value = "{{i.id}}">
-                        <label class = "form-check-label ml-4" style = "color:{{i.color}} " for="i.id">{{i.story}}</label><br/>
+                        <input type="checkbox" class = "form-check-input ml-2" name = "point" value = "{{i.0.id}}">
+                        <label class = "form-check-label ml-4" style = "color:{{i.0.color}} " for="i.id">{{i.0.story}} ({{i.1}})</label><br/>
                     {%endfor%}
                     <br/>
                 </div>

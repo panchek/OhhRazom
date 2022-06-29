@@ -23,6 +23,7 @@ class WorkBodyOutDoors(View):
         if flag == "addMark":
 
             MaxRazom = Totalplanes.objects.aggregate(Max('Razom_number'))
+            print(MaxRazom)
             instAdress = AdressPlanes(
                 adress_UA=request.POST.get('adress_UA'),
                 adress_RU=request.POST.get('adress_RU'),
