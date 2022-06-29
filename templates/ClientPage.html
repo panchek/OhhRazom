@@ -4,7 +4,7 @@
     	<title>{{NameAgancy.client.agancy}}</title>
 		<meta charset="UTF-8">
 		<meta http-equiv=Pragma content=no cache>
-		<link rel="shortcut icon" href="{% static 'OhhRazom/image/icons/Logo_' %}{{ NameAgancy.client.agancy }}.png" type="img/logo.png">
+		<link rel="shortcut icon" href="{% static 'OhhRazom/image/icons/logoforicon' %}{{ NameAgancy.client.agancy }}.png" type="img/logo.png">
 			<link rel="stylesheet" href="{% static 'OhhRazom/style/exit_data/js/lib_map/leaflet.css' %}" />
 		<link rel="stylesheet" type="text/css" href="{% static 'OhhRazom/style/exit_data/css/for_table.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'OhhRazom/style/exit_data/css/for_img.css' %}">
@@ -740,15 +740,15 @@
           {% csrf_token %}
         <div class="modal-body anyClass ">
                   <input type="radio" class = "form-check-input ml-2" name = "ch_rk" value = "null">
-                  <label class = "form-check-label ml-4" for="null">
-                      {% if lenguage == 'RU' %}
-                            {{TranslateModalWindow.Form_check_label.RU}}
-                      {% elif lenguage == 'EN' %}
-                            {{TranslateModalWindow.Form_check_label.EN}}
-                      {% elif lenguage == 'UA' %}
-                            {{TranslateModalWindow.Form_check_label.UA}}
-                      {% endif %}
-                  </label><br/>
+<!--                  <label class = "form-check-label ml-4" for="null">-->
+<!--                      {% if lenguage == 'RU' %}-->
+<!--                            {{TranslateModalWindow.Form_check_label.RU}}-->
+<!--                      {% elif lenguage == 'EN' %}-->
+<!--                            {{TranslateModalWindow.Form_check_label.EN}}-->
+<!--                      {% elif lenguage == 'UA' %}-->
+<!--                            {{TranslateModalWindow.Form_check_label.UA}}-->
+<!--                      {% endif %}-->
+<!--                  </label><br/>-->
                   {% for i in MyAC%}
                     <input type="radio" class = "form-check-input ml-2" name = "ch_rk" value = "{{i.id}}">
                   <label class = "form-check-label ml-4" for="null">{{i.RK}}</label><br/>
@@ -919,8 +919,8 @@
                     {% csrf_token %}
                 <div class ="border border-dark">
                     {% for i in filterStory%}
-                        <input type="checkbox" class = "form-check-input ml-2" name = "point" value = "{{i.id}}">
-                        <label class = "form-check-label ml-4" style = "color:{{i.color}} " for="i.id">{{i.story}}</label><br/>
+                        <input type="checkbox" class = "form-check-input ml-2" name = "point" value = "{{i.0.id}}">
+                        <label class = "form-check-label ml-4" style = "color:{{i.0.color}} " for="i.id">{{i.0.story}} ({{i.1}})</label><br/>
                     {%endfor%}
                     <br/>
                 </div>

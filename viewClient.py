@@ -67,8 +67,11 @@ class ClientPage(View):
                     outFormat.append(FormatPlanes.objects.get(id=i['Razom_number__format']))
 
                 outStory = []
+                outStoryCount = {}
                 for i in dataAll.values('story').distinct():
                     outStory.append(Story.objects.get(id=i['story']))
+                    outStoryCount[f"{Story.objects.get(id=i['story'])}"] = RkCompany.objects.filter(story_id=i['story']).count()
+
 
                 CountAC = {
                     "AllAC": len(RkCompany.objects.filter(rk=int(request.session['currentOutAC']))),
@@ -86,6 +89,7 @@ class ClientPage(View):
                 }
                 NameAgency = PermisionUsersClient.objects.get(userId=request.user.id)
                 request.session['currentDataOut'] = list(dataAll.values())
+                print(outStory)
                 return render(request, self.template_name, {
                     "color": WorkFiels.colorFile(str(NameAgency.client.agancy)),
                     'lenguage': request.COOKIES['lenguage'],
@@ -94,7 +98,7 @@ class ClientPage(View):
                     'filterCity': outCity,
                     'filterType': outType,
                     'filterFormat': outFormat,
-                    'filterStory': outStory,
+                    'filterStory': zip(outStory, outStoryCount.values()),
                     'Program': dataAll,
                     'tableNameHead': WorkFile.outLenguage("tableHead"),
                     "CountAboutAC": CountAC,

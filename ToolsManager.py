@@ -1,3 +1,4 @@
+import os
 from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -10,6 +11,7 @@ import datetime
 from django.shortcuts import redirect
 from openpyxl.styles import PatternFill, Border, Side, Alignment, Font
 
+############################
 # 1) Razom_number = 65197
 #    Route = 387
 # 2) Razom_number = 65198
@@ -68,15 +70,31 @@ class ToolsManager(View):
 
                     wbAdmin[f'C{last_start + count}'] = i[1]['route']
 
-                strPath = "/home/acrzmcomua/public_html/"
-                filename = strPath + f"media/OhhRazom/Excel/ManagerToolsRoutes/change_route_{datetime.datetime.now().strftime('%d_%m_%Y')}.xlsx"
+                # PRODUCTION ROUTE
+                # strPath = "/home/acrzmcomua/public_html/"
+                # filename = strPath + f"media/OhhRazom/Excel/ManagerToolsRoutes/change_route_{datetime.datetime.now().strftime('%d_%m_%Y')}.xlsx"
+
+                # DEPLOYMENT ROUTE
+                filename = f"media\OhhRazom\Excel\ManagerToolsRoutes\change_route_{datetime.datetime.now().strftime('%d_%m_%Y')}.xlsx"
                 wb.save(filename=filename)
 
                 for i in df:
                     Totalplanes.objects.filter(Razom_number=i[0]).update(route=i[1])
 
-                return redirect(f"/media/OhhRazom/Excel/ManagerToolsRoutes/change_route_{datetime.datetime.now().strftime('%d_%m_%Y')}.xlsx")
+                # PRODUCTUIN ROUTE
+                # return redirect(f"/media/OhhRazom/Excel/ManagerToolsRoutes/change_route_{datetime.datetime.now().strftime('%d_%m_%Y')}.xlsx")
 
+                # DEPLOYMENT ROUTE
+                return redirect(f"/media/OhhRazom/Excel/ManagerToolsRoutes/change_route_{datetime.datetime.now().strftime('%d_%m_%Y')}.xlsx")
+        return HttpResponseRedirect(reverse_lazy('Autentificate'))
+
+
+class ToolsManagerBot(View):
+    template_name = 'ToolsManagerBot.html'
+
+    def get(self, request):
+        if request.user.is_staff:
+            return render(request, self.template_name)
         return HttpResponseRedirect(reverse_lazy('Autentificate'))
 
 
