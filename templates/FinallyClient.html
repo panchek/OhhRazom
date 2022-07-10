@@ -36,7 +36,7 @@
                     <th>{{tableNameHead.Number.RU}}</th>
                     <th>{{tableNameHead.city.RU}}</th>
                     <th>{{tableNameHead.adress.RU}}</th>
-                    <th>doors</th>
+                    <th>DOORS</th>
                     <th>{{tableNameHead.SelfNumberCont.RU}}</th>
                     <th>{{tableNameHead.Razom_number.RU}}</th>
                     <th>{{tableNameHead.type.RU}}</th>
@@ -44,12 +44,13 @@
                     <th>{{tableNameHead.side.RU}}</th>
                     <th>OTS</th>
                     <th>GRP</th>
+                    <th>Комментарий</th>
                     <th>{{tableNameHead.story.RU}}</th>
                 {% elif lenguage == 'EN' %}
                     <th>{{tableNameHead.Number.EN}}</th>
                     <th>{{tableNameHead.city.EN}}</th>
                     <th>{{tableNameHead.adress.EN}}</th>
-                    <th>doors</th>
+                    <th>DOORS</th>
                     <th>{{tableNameHead.SelfNumberCont.EN}}</th>
                     <th>{{tableNameHead.Razom_number.EN}}</th>
                     <th>{{tableNameHead.type.EN}}</th>
@@ -57,12 +58,13 @@
                     <th>{{tableNameHead.side.EN}}</th>
                     <th>OTS</th>
                     <th>GRP</th>
+                    <th>Comment</th>
                     <th>{{tableNameHead.story.EN}}</th>
                 {% elif lenguage == 'UA' %}
                     <th>{{tableNameHead.Number.UA}}</th>
                     <th>{{tableNameHead.city.UA}}</th>
                     <th>{{tableNameHead.adress.UA}}</th>
-                    <th>doors</th>
+                    <th>DOORS</th>
                     <th>{{tableNameHead.SelfNumberCont.UA}}</th>
                     <th>{{tableNameHead.Razom_number.UA}}</th>
                     <th>{{tableNameHead.type.UA}}</th>
@@ -70,6 +72,7 @@
                     <th>{{tableNameHead.side.UA}}</th>
                     <th>OTS</th>
                     <th>GRP</th>
+                    <th>Коментар</th>
                     <th>{{tableNameHead.story.UA}}</th>
                 {% endif %}
   		    </tr>
@@ -118,6 +121,14 @@
                 <td>{{i.Razom_number.side.side}}</td>
                 <td>{{i.Razom_number.OTS}}</td>
                 <td>{{i.Razom_number.GRP}}</td>
+                <td width="350x"
+                {% if i.comment != None%}>
+<!--                    style="background:#20b5c0">-->
+                    {{i.comment}}
+                {% else %}>
+
+                {% endif %}
+                </td>
                 <td style="background:{{i.story.color}};color:#FFFFFF">{{i.story.story}}</td>
             </tr>
         {% endfor %}

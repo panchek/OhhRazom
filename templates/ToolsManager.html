@@ -16,18 +16,20 @@
 
       <div id="forNav">
         <nav class="navMenu">
-          <a href="#">Главное меню</a>
-          <a href="#">Настройка углов</a>
+          <a href="/toolsmanager">Главное меню</a>
+          <a href="route">Настройка углов</a>
           <a href="#">Настройка фото</a>
           <div class="dot"></div>
         </nav>
       </div>
-      
+
+      {% block main %}
       <div id="dif-info" align="center">
-        <p id="user-hello"></p><span id = "smile-contact">&#128540</span>
+        <p id="user-hello"></p>
+        <span id = "smile-contact">&#128540</span>
       </div>
       
-        <div class="main-function">
+        <!-- <div class="main-function">
           <span class = "tooltip" id="help-text" title = "Кликни и получи подробную инструкцию">?</span>
           <form id="changeRoute" method="post" enctype="multipart/form-data">
               {% csrf_token %}
@@ -36,11 +38,11 @@
             <button type="submit">Загрузить</button>
           </form>
         </div>
-      </div>
+      </div> -->
 
 
       <!-- MODAL WINDOW ИНСТРУКЦИЯ-->
-      <div id="popup1" class="popup">
+      <!-- <div id="popup1" class="popup">
         <div class="popup__body">
           <div class="popup__content">
             <span class="popup__close">X</span>
@@ -64,9 +66,9 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
-            <!-- MODAL WINDOW ИНСТРУКЦИЯ-->
+            <!-- MODAL WINDOW VERIFICATION-->
             <div id="popup-verification" class="popup">
               <div class="popup__body">
                 <div class="popup__content">
@@ -81,13 +83,14 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div>  
 
 
             <!-- MODAL WINDOW Контакты-->
               <div id="popup-contact" class="popup">
                 <div class="popup__body">
                   <div class="popup__content">
+                    <span class="popup__close_contact">X</span>
                     <div class="popup__title" align="center">Контакты</div>
                       <div class="popup__text">
                         <h4 align="center">Разработчик: Егор Паньков</h4>
@@ -97,5 +100,6 @@
                     </div>
                   </div>
                 </div>
+                {% endblock %}
 </body>
 </html>

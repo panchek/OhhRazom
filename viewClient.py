@@ -89,7 +89,6 @@ class ClientPage(View):
                 }
                 NameAgency = PermisionUsersClient.objects.get(userId=request.user.id)
                 request.session['currentDataOut'] = list(dataAll.values())
-                print(outStory)
                 return render(request, self.template_name, {
                     "color": WorkFiels.colorFile(str(NameAgency.client.agancy)),
                     'lenguage': request.COOKIES['lenguage'],

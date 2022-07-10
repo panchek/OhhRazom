@@ -54,6 +54,7 @@
 
         <link rel="stylesheet" href="https://unpkg.com/leaflet-pegman@0.1.6/leaflet-pegman.css" />
 		<script src="https://unpkg.com/leaflet-pegman@0.1.6/leaflet-pegman.js"></script>
+        <!-- <link rel="stylesheet" href="{% static 'admin\new\css\ToolsManager.css' %}"> -->
 
 
 		<style>
@@ -131,18 +132,47 @@
 		bottom: 0;
 		margin: auto
 	}
+
+    /* .test123{
+        display: inline-block;
+        height: 14px;
+        width: 5px;
+    } */
 	.Like_form_mark{
-		margin: 0;
+        display: inline-block;
+        width: 147.5px;
+        margin-right: 5px;
 	}
+    #like_for_css{
+        display: inline-block;
+        width: 147.5px;
+        height: 40px;
+        font-size: 14px;
+    }
 	.Dislike_form_mark{
 		margin: 0;
+        width: 147.5px;
+        display: inline-block;
 	}
+    #dislike_for_css{
+        display: inline-block;
+        width: 147.5px;
+        height: 40px;
+        font-size: 14px;
+    }
+    #makeComment{
+        position: relative;
+        top: -8px;
+        width: 100%;
+        height: 40px;
+    }
 		</style>
 	</head>
 	<body>
 	<script>
 	                const crfLike = '{% csrf_token %}';
 	                const dislike = '{% csrf_token %}';
+	                const crfComment = '{% csrf_token %}';
 					var locations;
 					const leng = '{{lenguage}}'
 					locations = [
@@ -645,6 +675,72 @@
     </div>
   </div>
 
+    <!-- Комментарии-->
+    <script>
+        function test(){
+            var razom_number = $('#raz_num').val();
+            $('#ttt1').html(razom_number);
+            $('#razom_number_for_db_id').val(razom_number);
+        }
+
+    </script>
+    <div class="modal fade" id="windowComment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel1">
+                  {% if lenguage == 'RU' %}
+                    Уникальный код агентства:
+                  {% elif lenguage == 'UA' %}
+                    Унікальний код кампанії:
+                  {% elif lenguage == 'EN' %}
+                    Unique campaign code:
+                  {% endif %}
+                  <p id="ttt1"></p>
+              </h5>
+            
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action ="Grade/comment" method ="POST">
+                {% csrf_token %}
+                <input type="hidden" name="razom_number_for_db" id = "razom_number_for_db_id">
+                      {% if lenguage == 'RU' %}
+                          <textarea class="form-control rounded-0" rows="10" name="commentArea" placeholder = "{{TranslateModalWindow.PlaceHolderComment.RU}}" required minlength="1"></textarea>
+                        {% elif lenguage == 'EN' %}
+                           <textarea class="form-control rounded-0" rows="10" name="commentArea" placeholder = "{{TranslateModalWindow.PlaceHolderComment.EN}}" required minlength="1"></textarea>
+                        {% elif lenguage == 'UA' %}
+                            <textarea class="form-control rounded-0" rows="10" name="commentArea" placeholder = "{{TranslateModalWindow.PlaceHolderComment.UA}}" required minlength="1"></textarea>
+                        {% endif %}
+    
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                    {% if lenguage == 'RU' %}
+                        {{TranslateModalWindow.ButtonClose.RU}}
+                    {% elif lenguage == 'EN' %}
+                        {{TranslateModalWindow.ButtonClose.EN}}
+                    {% elif lenguage == 'UA' %}
+                        {{TranslateModalWindow.ButtonClose.UA}}
+                    {% endif %}
+                </button>
+                <button  class="btn btn-{{color.color_bootstrap}}" name="save">
+                    {% if lenguage == 'RU' %}
+                        {{TranslateModalWindow.SaveCommentBtn.RU}}
+                    {% elif lenguage == 'EN' %}
+                        {{TranslateModalWindow.SaveCommentBtn.EN}}
+                    {% elif lenguage == 'UA' %}
+                        {{TranslateModalWindow.SaveCommentBtn.UA}}
+                    {% endif %}</button>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
   <!-- Фильтр по Типу-->
   <div class="modal fade" id="type" tabindex="-1" role="dialаog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -1105,5 +1201,6 @@
 				<script src="{% static 'OhhRazom/style/exit_data/modelsMap/AjaxForms.js' %}?v1"></script>
                 <script src="{% static 'OhhRazom/style/exit_data/js/remove.js' %}?v1"></script>
 				<script src="{% static 'OhhRazom/style/exit_data/js/map.js' %}?v1"></script>
+
 	</body>
 </html>

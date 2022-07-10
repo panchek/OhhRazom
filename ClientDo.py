@@ -51,6 +51,16 @@ class PassPoint(View):
             except Exception as e:
                 print(print(traceback.format_exc()))
                 return HttpResponse("Don`t Dislike")
+        elif point == "comment":
+            commentText = request.POST.get('commentArea')
+            razom_number_comment = request.POST.get('razom_number_for_db')
+            newComment = RkCompany.objects.filter(rk=request.session['currentOutAC']).get(Razom_number__Razom_number= int(razom_number_comment))
+            print('------------------------------------')
+            print(newComment)
+            print(RkCompany.objects.filter(Razom_number_id= int(razom_number_comment)))
+            newComment.comment = commentText
+            newComment.save()
+            return HttpResponseRedirect(reverse_lazy('Autentificate'))
         else:
             raise Http404
 
@@ -101,6 +111,7 @@ class ExportExcelClient(View):
             NameRK = Rk.objects.get(id=request.session['currentOutAC'])
             #strPath = ""
             strPath = "/home/acrzmcomua/public_html/"
+            # strPath = "D:\work\Razom\ooh\\"  # для меня
             filename = strPath + f"media/OhhRazom/Excel/{request.user}{NameRK.RK}.xlsx"
             wbAdmin = wb.active
             wbAdmin.title = "AC"
@@ -169,7 +180,7 @@ class ExportExcelClient(View):
                         wbAdmin[f'{k}{stratCursor}'].fill = PatternFill("solid", "FFA07A")
                 if request.COOKIES['lenguage'] == "RU":
                     wbAdmin[f"B{stratCursor}"] = tmpInst.Razom_number.city_standart.city_standart_RU
-                    wbAdmin[f"C{stratCursor}"] = tmpInst.Razom_number.adress.adress_RU
+                    wbAdmin[f"C{stratCursor}"] = f'{tmpInst.Razom_number.adress.adress_RU} {tmpInst.Razom_number.house} {tmpInst.Razom_number.loc.Location_RU}'
                     wbAdmin[f"D{stratCursor}"] = tmpInst.Razom_number.type.typeRU
                     wbAdmin[f"E{stratCursor}"] = tmpInst.Razom_number.format.format
                     wbAdmin[f"F{stratCursor}"] = tmpInst.Razom_number.side.side
@@ -191,7 +202,7 @@ class ExportExcelClient(View):
                     wbAdmin[f"N{stratCursor}"] = tmpInst.story.story
                 elif request.COOKIES['lenguage'] == "EN":
                     wbAdmin[f"B{stratCursor}"] = tmpInst.Razom_number.city_standart.city_standart_EN
-                    wbAdmin[f"C{stratCursor}"] = tmpInst.Razom_number.adress.adress_EN
+                    wbAdmin[f"C{stratCursor}"] = f'{tmpInst.Razom_number.adress.adress_EN} {tmpInst.Razom_number.house} {tmpInst.Razom_number.loc.Location_EN}'
                     wbAdmin[f"D{stratCursor}"] = tmpInst.Razom_number.type.typeEN
                     wbAdmin[f"E{stratCursor}"] = tmpInst.Razom_number.format.format
                     wbAdmin[f"F{stratCursor}"] = tmpInst.Razom_number.side.side
@@ -213,7 +224,7 @@ class ExportExcelClient(View):
                     wbAdmin[f"N{stratCursor}"] = tmpInst.story.story
                 elif request.COOKIES['lenguage'] == "UA":
                     wbAdmin[f"B{stratCursor}"] = tmpInst.Razom_number.city_standart.city_standart_UA
-                    wbAdmin[f"C{stratCursor}"] = tmpInst.Razom_number.adress.adress_UA
+                    wbAdmin[f"C{stratCursor}"] = f'{tmpInst.Razom_number.adress.adress_UA} {tmpInst.Razom_number.house} {tmpInst.Razom_number.loc.Location_UA}'
                     wbAdmin[f"D{stratCursor}"] = tmpInst.Razom_number.type.typeUA
                     wbAdmin[f"E{stratCursor}"] = tmpInst.Razom_number.format.format
                     wbAdmin[f"F{stratCursor}"] = tmpInst.Razom_number.side.side
@@ -258,11 +269,13 @@ class ExportExcelClient(View):
                 wbAdmin[f"N{stratCursor}"].fill  = PatternFill("solid",  str(tmpInst.story.color).replace("#",""))
                 stratCursor += 1
             strPath = "/home/acrzmcomua/public_html"
+            # strPath = 'D:\work\Razom\ooh'  # для меня
             fullPathFile = os.path.join(strPath, "media", "OhhRazom", "Excel",
                                         f'{request.user}{NameRK.RK}.xlsx')
             if os.path.exists(fullPathFile):
                 os.remove(fullPathFile)
             wb.save(filename=filename)
+            # return redirect(f'/media/OhhRazom/Excel/{request.user}{NameRK.RK}.xlsx')  # для меня
             return redirect(f'/media/OhhRazom/Excel/{request.user}{NameRK.RK}.xlsx')
         except Exception as e:
             print(traceback.format_exc())

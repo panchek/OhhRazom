@@ -45,6 +45,7 @@
                     <th>{{tableNameHead.side.RU}}</th>
                     <th>OTS</th>
                     <th>GRP</th>
+                    <th>Комментарий</th>
                     <th>{{tableNameHead.story.RU}}</th>
                 {% elif lenguage == 'EN' %}
                     <th>{{tableNameHead.Number.EN}}</th>
@@ -59,6 +60,7 @@
                     <th>{{tableNameHead.side.EN}}</th>
                     <th>OTS</th>
                     <th>GRP</th>
+                    <th>Comment</th>
                     <th>{{tableNameHead.story.EN}}</th>
                 {% elif lenguage == 'UA' %}
                     <th>{{tableNameHead.Number.UA}}</th>
@@ -73,6 +75,7 @@
                     <th>{{tableNameHead.side.UA}}</th>
                     <th>OTS</th>
                     <th>GRP</th>
+                    <th>Коментар</th>
                     <th>{{tableNameHead.story.UA}}</th>
                 {% endif %}
   		    </tr>
@@ -100,15 +103,54 @@
             {% if lenguage == 'RU' %}
                 <td>{{i.Razom_number.city_standart.city_standart_RU}}</td>
                 <td>{{i.Razom_number.Contractor.Contractor_RU}}</td>
-                <td>{{i.Razom_number.adress.adress_RU}} {{i.Razom_number.house}} {{i.Razom_number.loc.Location_RU}}</td>
+                <td>
+                    {{i.Razom_number.adress.adress_RU}}
+<!--                    # Убираем точки-->
+                    {% if '.' in i.Razom_number.house%}
+                        {{''}}
+                    {% else %}
+                        {{i.Razom_number.house}}
+                    {% endif %}
+                    {% if '.' in i.Razom_number.loc.Location_RU%}
+                        {{''}}
+                    {% else %}
+                        {{i.Razom_number.loc.Location_RU}}
+                    {% endif %}
+                </td>
             {% elif lenguage == 'EN' %}
                 <td>{{i.Razom_number.city_standart.city_standart_EN}}</td>
                 <td>{{i.Razom_number.Contractor.Contractor_EN}}</td>
-                <td>{{i.Razom_number.adress.adress_EN}} {{i.Razom_number.house}} {{i.Razom_number.loc.Location_EN}}</td>
+                <td>
+                    {{i.Razom_number.adress.adress_EN}}
+<!--                     Убираем точки-->
+                    {% if '.' in i.Razom_number.house%}
+                        {{''}}
+                    {% else %}
+                        {{i.Razom_number.house}}
+                    {% endif %}
+                    {% if '.' in i.Razom_number.loc.Location_EN%}
+                        {{''}}
+                    {% else %}
+                        {{i.Razom_number.loc.Location_EN}}
+                    {% endif %}
+                </td>
             {% elif lenguage == 'UA' %}
                 <td>{{i.Razom_number.city_standart.city_standart_UA}}</td>
                 <td>{{i.Razom_number.Contractor.Contractor_UA}}</td>
-                <td>{{i.Razom_number.adress.adress_UA}} {{i.Razom_number.house}} {{i.Razom_number.loc.Location_UA}}</td>
+                <td>
+                    {{i.Razom_number.adress.adress_UA}}
+<!--                    # Убираем точки-->
+                    {% if '.' in i.Razom_number.house%}
+                        {{''}}
+                    {% else %}
+                        {{i.Razom_number.house}}
+                    {% endif %}
+                    {% if '.' in i.Razom_number.loc.Location_UA%}
+                        {{''}}
+                    {% else %}
+                        {{i.Razom_number.loc.Location_UA}}
+                    {% endif %}
+                </td>
             {% endif %}
                 <td>{{i.Razom_number.doors}}</td>
                 <td>{{i.Razom_number.Self_number}}</td>
@@ -124,15 +166,22 @@
                 <td>{{i.Razom_number.side.side}}</td>
                 <td>{{i.Razom_number.OTS}}</td>
                 <td>{{i.Razom_number.GRP}}</td>
+                <td width="350x"
+                {% if i.comment != None%}>
+<!--                    style="background:#20b5c0">-->
+                    {{i.comment}}
+                {% else %}>
+
+                {% endif %}
                 <td style="background:{{i.story.color}};color:#FFFFFF">{{i.story.story}}</td>
             </tr>
         {% endfor %}
         </tbody>
   	</table>
 
-    <script>
-        table = document.getElementById('all_table');
-                new Tablesort(table);
-    </script>
+<!--    <script>-->
+<!--        table = document.getElementById('all_table');-->
+<!--                new Tablesort(table);-->
+<!--    </script>-->
 
 {% endblock %}
