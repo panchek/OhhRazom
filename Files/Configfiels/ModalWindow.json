@@ -98,5 +98,20 @@
     "RU": "Ничего",
     "EN": "Nothing",
     "UA": "Нічого"
+  },
+  "LeaveCommentLabel" : {
+    "RU": "Оставить комментарий",
+    "EN": "Leave a comment",
+    "UA": "Залишити коментарій"
+  },
+    "SaveCommentBtn" : {
+    "RU": "Сохранить комментарий",
+    "EN": "Save comment",
+    "UA": "Зберегти коментарій"
+  },
+  "PlaceHolderComment": {
+    "RU": "Напишите свой отзыв",
+    "EN": "Enter your comment here",
+    "UA": "Напишіть свій коментарій"
   }
 }

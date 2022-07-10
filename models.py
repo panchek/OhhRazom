@@ -114,6 +114,7 @@ class RkCompany(models.Model):
     Razom_number = models.ForeignKey(Totalplanes, on_delete=models.CASCADE)
     Grade = models.IntegerField(null=True)
     story = models.ForeignKey(Story, on_delete=models.CASCADE, default=1)
+    comment = models.CharField(max_length=400, null=True)
 
     def __str__(self):
         return str(self.rk) + " " + str(self.Razom_number) + " " + str(self.story)
