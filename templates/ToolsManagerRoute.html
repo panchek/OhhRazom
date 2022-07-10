@@ -1,0 +1,76 @@
+{% extends "ToolsManager.html" %}
+{% load static %}
+{% block main %}
+  
+    <div class="main-function">
+      <span class = "tooltip" id="help-text" title = "Кликни и получи подробную инструкцию">?</span>
+      <form id="changeRoute" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <input type="file" name="myfile" multiple>
+        <p>Перенесите файл или кликнете на плоскость чтобы изменить углы</p>
+        <button type="submit">Загрузить</button>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- MODAL WINDOW ИНСТРУКЦИЯ-->
+  <div id="popup1" class="popup">
+    <div class="popup__body">
+      <div class="popup__content">
+        <span class="popup__close">X</span>
+        <div class="popup__title" align="center">Инструкция</div>
+        <div class="popup__text">
+          <h3 align="center">Данная функция помогает редактировать углы плоскости.</h3>
+          <br>1) Вы можете открыть проводник <img src="{% static 'admin\new\img\sample.png' %}" height="25px" width="25px">на своем компьютере и перетянуть Excel файл в форму, или нажать на форму 
+                 и выбрать соответствующий Excel файл.
+          <br>2) Далее нажмите на кнопку загрузить, после чего нужные изменения внесуться в базу данных, а на Ваш компьютур будет
+                скачан файл в котором Вы можете проверить правильность внесеных изменений, посмотреть какие углы были до изменений.
+          <br> ----------------------------------------------------------------------------------------------------------------
+          <br> <div align="center">Пример, как должен выглядеть Excel файл, который Вы хотите подгрузить</div>
+          <br> <div align="center"><img src="{% static 'admin\new\img\Excel_sample.png' %}"></div>
+          <br> - Вы создаете таблицу с двумя колонками. Первая колонка - уникальный код компании (Razom number),
+          вторая - новый угол (New route) который Вы хотите внести базу. <font face="Comic sans MS" color="red">ВАЖНО</font> порядок колонок должень быть как в примере.
+          <br> - В примере колонки имеют названия <font face="Comic sans MS">Razom_number</font> и <font face="Comic sans MS">New_route</font>, Вы можете называть колонки как Вам удобно, но по возможности старайтесь следовать примеру. 
+          <br> - Вы можете использовать столько строк, сколько вам нужно изменить плоскостей. В примере мы меняем углы всего для двух плоскостей.
+          <br> - После того как Вы занесли все нужные данные в Excel файл, сохраните его в любой удобной для Вас папке на своем компьютере. После чего зайдите на страницу 
+              <font face="Comic sans MS">https://ac.rzm.com.ua/toolsmanager</font> и загрузите файл. При нажатии на кнопку <font face="Comic sans MS">Загрузить</font> данные с Вашего файла обработаются
+              и в базе данных углы плоскостей заменяться на новые, которые Вы указали в файле, а на Ваш компьютер скачается отчет (Excel файл), в котором Вы сможете проверить изменения.
+        </div>
+      </div>
+    </div>
+  </div>
+
+        <!-- MODAL WINDOW VERIFICATION-->
+        <div id="popup-verification" class="popup">
+          <div class="popup__body">
+            <div class="popup__content">
+              <div class="popup__title" align="center">Проверка</div>
+              <div class="popup__text">
+                <h4 align="center">На странице <font face="Comic sans MS" color="green">https://ac.rzm.com.ua/toolsmanager</font> есть доступ до базы данных, поэтому нам очень важно понять, что 
+                  <font face="Comic sans MS" color="green">ВЫ наш человек</font> <img src="{% static 'admin\new\img\verification_smile.jpg' %}" width="25px"></h4>
+                <div align="center"><form class="validation">
+                  <input id="inpt-validation" class="inpt-validation-cls" type="text" placeholder="Введите ключевую фразу">
+                </form></div>
+                <div align="center" id="one-more"><font face="Comic sans MS" color="red">Попробуйте еще разок</font></div>
+              </div>
+            </div>
+          </div>
+        </div>  
+
+
+        <!-- MODAL WINDOW Контакты-->
+          <div id="popup-contact" class="popup">
+            <div class="popup__body">
+              <div class="popup__content">
+                <span class="popup__close_contact">X</span>
+                <div class="popup__title" align="center">Контакты</div>
+                  <div class="popup__text">
+                    <h4 align="center">Разработчик: Егор Паньков</h4>
+                    <h4 align="center">Рабочая почта: <font id="mail">george.pankov@initiativemedia.com.ua</font> <button id="copy">Copy</button></h4>
+                    <h4 align="center">Номер телефона: 0661822017</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+{% endblock %}
